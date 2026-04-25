@@ -324,61 +324,48 @@
   </style>
 
 
-  <style id="nova-contact-final-layout">
-    /* N.O.V.A final contact layout fix */
+  <style id="nova-contact-no-crop-fix">
+    /* N.O.V.A contact section final: no crop + clean cards */
 
     footer {
       display: none !important;
-      height: 0 !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      border: 0 !important;
-      background: transparent !important;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     nav#navbar {
+      min-height: 86px !important;
       transition: transform 0.32s ease, background 0.32s ease, border-color 0.32s ease !important;
       will-change: transform;
     }
 
-    nav .logo,
-    footer .logo {
+    nav .logo {
       display: inline-flex !important;
       align-items: center !important;
       text-decoration: none !important;
     }
 
     nav .logo img {
-      height: 96px !important;
+      height: 74px !important;
       width: auto !important;
       max-height: none !important;
       object-fit: contain !important;
       display: block !important;
     }
 
-    nav#navbar {
-      min-height: 104px !important;
-    }
-
-    /* Contact/order section: full background, no separate footer block */
     #contact.contact-section {
       position: relative !important;
-      overflow: hidden !important;
       min-height: calc(100vh - 0px) !important;
-      padding: 130px 6vw 52px !important;
+      padding: 118px 5vw 42px !important;
+      overflow: hidden !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
-      justify-content: flex-start !important;
       background:
-        linear-gradient(180deg, rgba(1,5,12,0.72) 0%, rgba(1,5,12,0.28) 35%, rgba(1,5,12,0.18) 62%, rgba(1,5,12,0.60) 100%),
-        url("contact-bg.png") center 48% / cover no-repeat !important;
+        linear-gradient(180deg, rgba(1, 5, 12, 0.74) 0%, rgba(1, 5, 12, 0.30) 42%, rgba(1, 5, 12, 0.18) 66%, rgba(1, 5, 12, 0.66) 100%),
+        url("contact-bg.png") center center / contain no-repeat !important;
+      background-color: #02050c !important;
       border-top: 1px solid rgba(47,111,255,0.18);
       border-bottom: 0 !important;
+      text-align: center !important;
     }
 
     #contact.contact-section::before {
@@ -386,120 +373,160 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 56%, transparent 0%, transparent 34%, rgba(0,0,0,0.18) 58%, rgba(0,0,0,0.62) 100%),
-        linear-gradient(90deg, rgba(0,0,0,0.58), transparent 24%, transparent 76%, rgba(0,0,0,0.58));
+        linear-gradient(90deg, rgba(0,0,0,0.68), transparent 18%, transparent 82%, rgba(0,0,0,0.68)),
+        radial-gradient(circle at 50% 54%, transparent 0%, transparent 40%, rgba(0,0,0,0.20) 62%, rgba(0,0,0,0.58) 100%);
       pointer-events: none;
       z-index: 1;
     }
 
     #contact.contact-section > * {
-      position: relative;
-      z-index: 2;
+      position: relative !important;
+      z-index: 2 !important;
     }
 
-    #contact .section-tag.center {
-      font-size: 18px !important;
-      letter-spacing: 0.45em !important;
+    #contact .contact-content {
+      width: min(100%, 760px) !important;
+      margin: 0 auto !important;
+    }
+
+    #contact .contact-tag {
       color: #4590ff !important;
-      margin: 0 0 18px !important;
-      text-shadow: 0 0 18px rgba(47,111,255,0.48);
+      font-size: 17px !important;
+      letter-spacing: 0.42em !important;
+      font-weight: 900 !important;
+      margin-bottom: 16px !important;
+      text-shadow: 0 0 18px rgba(47,111,255,0.52);
     }
 
-    #contact .section-title.center {
-      font-size: clamp(58px, 5vw, 92px) !important;
-      line-height: 0.92 !important;
+    #contact .contact-title {
+      font-size: clamp(48px, 4.6vw, 78px) !important;
+      line-height: 0.95 !important;
       letter-spacing: -0.035em !important;
-      margin: 0 0 26px !important;
-      text-shadow: 0 0 30px rgba(47,111,255,0.22);
+      margin: 0 0 22px !important;
+      text-shadow: 0 0 28px rgba(47,111,255,0.20);
     }
 
     #contact .contact-sub {
-      max-width: 720px !important;
-      margin: 0 auto 32px !important;
-      font-size: 18px !important;
-      line-height: 1.7 !important;
       color: rgba(238,245,255,0.90) !important;
-      text-align: center !important;
-      text-shadow: 0 1px 18px rgba(0,0,0,0.55);
+      font-size: 18px !important;
+      line-height: 1.65 !important;
+      margin: 0 auto 28px !important;
+      text-shadow: 0 1px 18px rgba(0,0,0,0.60);
     }
 
     #contact .center-btn {
-      font-size: 16px !important;
-      letter-spacing: 0.10em !important;
-      min-width: 330px !important;
-      padding: 18px 34px !important;
-      text-transform: uppercase !important;
-      font-family: "DM Sans", Arial, sans-serif !important;
-      font-weight: 900 !important;
-      margin-bottom: 0 !important;
-      box-shadow: 0 0 32px rgba(47,111,255,0.36) !important;
-    }
-
-    #contact .contact-options {
-      width: min(100%, 980px) !important;
-      margin: auto auto 52px !important;
-      display: grid !important;
-      grid-template-columns: repeat(3, minmax(220px, 1fr)) !important;
-      gap: 20px !important;
-    }
-
-    #contact .contact-opt {
-      min-height: 108px !important;
-      display: flex !important;
-      flex-direction: column !important;
+      display: inline-flex !important;
+      align-items: center !important;
       justify-content: center !important;
-      padding: 24px 34px !important;
-      border-radius: 16px !important;
-      background: rgba(4, 13, 28, 0.62) !important;
-      border: 1px solid rgba(47,111,255,0.38) !important;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 52px rgba(0,0,0,0.28), inset 0 0 28px rgba(47,111,255,0.045) !important;
-    }
-
-    #contact .co-label {
-      font-size: 13px !important;
-      letter-spacing: 0.24em !important;
-      color: rgba(238,245,255,0.62) !important;
-      margin-bottom: 10px !important;
+      min-width: 310px !important;
+      padding: 17px 34px !important;
+      font-size: 15px !important;
+      font-weight: 900 !important;
+      letter-spacing: 0.11em !important;
       text-transform: uppercase !important;
+      margin: 0 !important;
+      box-shadow: 0 0 32px rgba(47,111,255,0.34) !important;
     }
 
-    #contact .co-val {
-      font-size: 18px !important;
+    #contact .contact-info {
+      width: min(100%, 980px) !important;
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(230px, 1fr)) !important;
+      gap: 18px !important;
+      margin: auto auto 34px !important;
+      padding-top: 42px !important;
+    }
+
+    #contact .info-card {
+      min-height: 112px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 20px !important;
+      text-align: left !important;
+      padding: 24px 28px !important;
+      border-radius: 16px !important;
+      background: rgba(4, 13, 28, 0.68) !important;
+      border: 1px solid rgba(47,111,255,0.42) !important;
+      box-shadow: 0 18px 52px rgba(0,0,0,0.30), inset 0 0 30px rgba(47,111,255,0.05) !important;
+      backdrop-filter: blur(10px);
+      text-decoration: none !important;
       color: #fff !important;
-      font-weight: 700 !important;
+    }
+
+    #contact .info-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(72, 148, 255, 0.72) !important;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.36), 0 0 28px rgba(47,111,255,0.22) !important;
+    }
+
+    #contact .info-icon {
+      width: 54px !important;
+      height: 54px !important;
+      flex: 0 0 54px !important;
+      display: grid !important;
+      place-items: center !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(47,111,255,0.70) !important;
+      background: rgba(47,111,255,0.12) !important;
+      box-shadow: inset 0 0 18px rgba(47,111,255,0.16);
+    }
+
+    #contact .info-icon svg {
+      width: 25px !important;
+      height: 25px !important;
+      fill: none !important;
+      stroke: #2f7dff !important;
+      stroke-width: 2.1 !important;
+      stroke-linecap: round !important;
+      stroke-linejoin: round !important;
+    }
+
+    #contact .info-card span {
+      display: block !important;
+      color: rgba(238,245,255,0.65) !important;
+      font-size: 12px !important;
+      letter-spacing: 0.24em !important;
+      font-weight: 800 !important;
+      margin-bottom: 8px !important;
+    }
+
+    #contact .info-card strong {
+      display: block !important;
+      color: #fff !important;
+      font-size: 18px !important;
+      line-height: 1.35 !important;
+      font-weight: 800 !important;
+      word-break: break-word !important;
     }
 
     #contact .contact-copy {
-      position: relative !important;
-      z-index: 2 !important;
-      margin-top: 0 !important;
-      padding-bottom: 0 !important;
-      text-align: center !important;
-      font-size: 15px !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.06em !important;
       color: rgba(238,245,255,0.82) !important;
-      text-shadow: 0 0 18px rgba(47,111,255,0.35);
+      font-size: 14px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      text-shadow: 0 0 18px rgba(47,111,255,0.34);
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     @media (max-width: 920px) {
-      nav .logo img {
-        height: 68px !important;
+      nav#navbar {
+        min-height: 76px !important;
       }
 
-      nav#navbar {
-        min-height: 82px !important;
+      nav .logo img {
+        height: 58px !important;
       }
 
       #contact.contact-section {
         min-height: 100vh !important;
-        padding: 110px 22px 42px !important;
-        background-position: center 50% !important;
+        padding: 96px 22px 34px !important;
+        background-size: contain !important;
+        background-position: center center !important;
       }
 
-      #contact .section-title.center {
-        font-size: 52px !important;
+      #contact .contact-title {
+        font-size: 46px !important;
       }
 
       #contact .contact-sub {
@@ -507,40 +534,18 @@
       }
 
       #contact .center-btn {
-        min-width: 0 !important;
         width: 100% !important;
+        min-width: 0 !important;
         max-width: 360px !important;
       }
 
-      #contact .contact-options {
+      #contact .contact-info {
         grid-template-columns: 1fr !important;
-        margin: auto 0 34px !important;
+        margin-bottom: 28px !important;
+        padding-top: 36px !important;
       }
     }
   </style>
-
-
-<style id="nova-final">
-#contact{
- height:100vh;
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
- background:
- linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
- url("contact-bg.png") center/contain no-repeat;
- background-color:#000;
-}
-.contact-content{max-width:700px}
-.section-title{font-size:60px;margin:20px 0}
-.contact-sub{opacity:.8;margin-bottom:30px}
-.center-btn{margin-bottom:50px}
-.contact-info{display:flex;gap:60px;justify-content:center;margin-top:40px}
-.info-item span{font-size:12px;opacity:.6}
-.info-item a{color:#fff;font-size:18px;text-decoration:none}
-.contact-copy{margin-top:80px;opacity:.6;font-size:14px}
-</style>
 
 </head>
 <body>
@@ -842,37 +847,64 @@
   </section>
 
   <!-- CONTACT -->
-  
-<section id="contact" class="contact-section">
-  <div class="contact-content">
-    <div class="section-tag">ХОЛБОО БАРИХ</div>
-    <h2 class="section-title">ЗАХИАЛГА ӨГӨХ</h2>
-    <p class="contact-sub">
-      Арга хэмжээний мэдээллээ үлдээгээрэй.<br>
-      Бид 24 цагийн дотор холбогдоно.
-    </p>
 
-    <button class="btn-primary center-btn" data-quote-open>
-      ҮНИЙН САНАЛ АВАХ →
-    </button>
+  <section id="contact" class="contact-section">
+    <div class="contact-content">
+      <div class="section-tag contact-tag">ХОЛБОО БАРИХ</div>
+      <h2 class="section-title contact-title">ЗАХИАЛГА ӨГӨХ</h2>
+      <p class="contact-sub">
+        Арга хэмжээний мэдээллээ үлдээгээрэй.<br>
+        Бид 24 цагийн дотор холбогдоно.
+      </p>
+
+      <button class="btn-primary center-btn" type="button" data-quote-open>
+        ҮНИЙН САНАЛ АВАХ →
+      </button>
+    </div>
 
     <div class="contact-info">
-      <div class="info-item">
-        <span>УТАС</span>
-        <a href="tel:+97699245574">+976 9924 5574</a>
-      </div>
+      <a class="info-card" href="tel:+97699245574">
+        <div class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 11.19 19 19.5 19.5 0 0 1 5 12.81 19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8 9.67a16 16 0 0 0 6.33 6.33l1.23-1.23a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div>
+          <span>УТАС</span>
+          <strong>+976 9924 5574</strong>
+        </div>
+      </a>
 
-      <div class="info-item">
-        <span>ИМЭЙЛ</span>
-        <a href="mailto:novaxstage@gmail.com">novaxstage@gmail.com</a>
+      <a class="info-card" href="mailto:novaxstage@gmail.com">
+        <div class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+            <path d="m22 6-10 7L2 6"/>
+          </svg>
+        </div>
+        <div>
+          <span>ИМЭЙЛ</span>
+          <strong>novaxstage@gmail.com</strong>
+        </div>
+      </a>
+
+      <div class="info-card">
+        <div class="info-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <span>ХАЯГ</span>
+          <strong>Улаанбаатар, Монгол</strong>
+        </div>
       </div>
     </div>
 
-    <div class="contact-copy">
-      © 2026 БҮХ ЭРХ ХУУЛИАР ХАМГААЛАГДСАН
-    </div>
-  </div>
-</section>
+    <div class="contact-copy">© 2026 NovaX Stage. Бүх эрх хуулиар хамгаалагдсан.</div>
+  </section>
+
 
 
 
