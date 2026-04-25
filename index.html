@@ -10,6 +10,128 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* NOVA FIX: logo 2x томруулалт */
+    nav .logo img,
+    footer .logo img {
+      height: 64px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    @media (max-width: 768px) {
+      nav .logo img,
+      footer .logo img {
+        height: 48px;
+      }
+    }
+
+    /* NOVA FIX: Үнийн санал popup form */
+    .quote-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+    }
+
+    .quote-modal.open {
+      display: flex;
+    }
+
+    .quote-modal-card {
+      position: relative;
+      width: min(100%, 480px);
+      padding: 32px;
+      border: 1px solid rgba(47, 111, 255, 0.45);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top, rgba(47, 111, 255, 0.22), transparent 42%),
+        #07101f;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55), 0 0 35px rgba(47, 111, 255, 0.18);
+      color: #fff;
+    }
+
+    .quote-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .quote-modal-card h3 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .quote-modal-card p {
+      margin: 0 0 22px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.6;
+    }
+
+    .quote-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .quote-form input,
+    .quote-form textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      border: 1px solid rgba(47, 111, 255, 0.35);
+      border-radius: 12px;
+      outline: none;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font: inherit;
+    }
+
+    .quote-form input::placeholder,
+    .quote-form textarea::placeholder {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .quote-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .quote-submit {
+      margin-top: 4px;
+      padding: 15px 18px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2f6fff, #00b7ff);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 24px rgba(47, 111, 255, 0.35);
+    }
+
+    .quote-submit:hover {
+      transform: translateY(-1px);
+    }
+  </style>
+
 </head>
 <body>
 
@@ -23,7 +145,7 @@
       <li><a href="#about">Тухай</a></li>
       <li><a href="#contact">Холбоо</a></li>
     </ul>
-    <button class="nav-cta">Захиалах</button>
+    <button class="nav-cta" type="button" data-quote-open>Захиалах</button>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -315,7 +437,7 @@
     <div class="section-tag center">Холбоо барих</div>
     <h2 class="section-title center">ЗАХИАЛГА<br>ӨГӨХ</h2>
     <p class="contact-sub">Арга хэмжээний мэдээлэл, товлох огноогоо илгээгээрэй.<br>Бид 24 цагийн дотор буцаж холбогдоно.</p>
-    <button class="btn-primary center-btn" data-scroll="contact">Үнийн санал авах →</button>
+    <button class="btn-primary center-btn" type="button" data-quote-open>Үнийн санал авах →</button>
     <div class="contact-options">
       <div class="contact-opt">
         <div class="co-label">Утас</div>
@@ -331,6 +453,25 @@
       </div>
     </div>
   </section>
+
+
+  <!-- QUOTE MODAL -->
+  <div class="quote-modal" id="quoteModal" aria-hidden="true">
+    <div class="quote-modal-card" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+      <button class="quote-close" type="button" data-quote-close aria-label="Close">&times;</button>
+      <h3 id="quoteTitle">Үнийн санал авах</h3>
+      <p>Нэр, утас, имэйл болон арга хэмжээний мэдээллээ үлдээгээрэй. Бид 24 цагийн дотор холбогдоно.</p>
+
+      <form class="quote-form" action="https://formspree.io/f/mgorqynz" method="POST">
+        <input type="text" name="name" placeholder="Таны нэр" required>
+        <input type="tel" name="phone" placeholder="Утасны дугаар" required>
+        <input type="email" name="email" placeholder="Имэйл хаяг" required>
+        <textarea name="message" placeholder="Арга хэмжээний төрөл, огноо, хэрэгтэй тоног төхөөрөмж..." required></textarea>
+        <input type="hidden" name="_subject" value="NovaX Stage - Үнийн санал авах хүсэлт">
+        <button class="quote-submit" type="submit">Дуусгах</button>
+      </form>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>

@@ -1,5 +1,5 @@
 /* ===========================
-   NovaX – main.js (FIXED)
+   NovaX – main.js (FINAL FIX)
    =========================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,11 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   if (navbar) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 60) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
     });
   }
 
@@ -55,9 +51,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // NAV CTA (Захиалах button)
-  document.querySelector('.nav-cta')?.addEventListener('click', () => {
-    scrollToSection('contact');
+  // Quote modal
+  const quoteModal = document.getElementById('quoteModal');
+  const openQuoteButtons = document.querySelectorAll('[data-quote-open]');
+  const closeQuoteButtons = document.querySelectorAll('[data-quote-close]');
+
+  function openQuoteModal() {
+    if (!quoteModal) return;
+    quoteModal.classList.add('open');
+    quoteModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeQuoteModal() {
+    if (!quoteModal) return;
+    quoteModal.classList.remove('open');
+    quoteModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  openQuoteButtons.forEach(button => {
+    button.addEventListener('click', openQuoteModal);
+  });
+
+  closeQuoteButtons.forEach(button => {
+    button.addEventListener('click', closeQuoteModal);
+  });
+
+  quoteModal?.addEventListener('click', (event) => {
+    if (event.target === quoteModal) {
+      closeQuoteModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeQuoteModal();
+    }
   });
 
   // Service tab switcher
