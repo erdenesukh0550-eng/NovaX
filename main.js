@@ -208,4 +208,20 @@ document.addEventListener('DOMContentLoaded', () => {
       revealObserver.observe(el);
     });
   }
+  // N.O.V.A light-on effect for contact section
+  const contactSection = document.getElementById('contact');
+  if (contactSection && 'IntersectionObserver' in window) {
+    const contactLightObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          contactSection.classList.add('light-on');
+        } else {
+          contactSection.classList.remove('light-on');
+        }
+      });
+    }, { threshold: 0.35 });
+
+    contactLightObserver.observe(contactSection);
+  }
+
 });
