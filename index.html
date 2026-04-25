@@ -519,6 +519,29 @@
     }
   </style>
 
+
+<style id="nova-final">
+#contact{
+ height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ background:
+ linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+ url("contact-bg.png") center/contain no-repeat;
+ background-color:#000;
+}
+.contact-content{max-width:700px}
+.section-title{font-size:60px;margin:20px 0}
+.contact-sub{opacity:.8;margin-bottom:30px}
+.center-btn{margin-bottom:50px}
+.contact-info{display:flex;gap:60px;justify-content:center;margin-top:40px}
+.info-item span{font-size:12px;opacity:.6}
+.info-item a{color:#fff;font-size:18px;text-decoration:none}
+.contact-copy{margin-top:80px;opacity:.6;font-size:14px}
+</style>
+
 </head>
 <body>
 
@@ -532,7 +555,7 @@
       <li><a href="#about">Тухай</a></li>
       <li><a href="#contact">Холбоо</a></li>
     </ul>
-    <button class="nav-cta" type="button" data-scroll="contact">Захиалах</button>
+    
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -819,26 +842,38 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="contact-section">
-    <div class="section-tag center">Холбоо барих</div>
-    <h2 class="section-title center">ЗАХИАЛГА<br>ӨГӨХ</h2>
-    <p class="contact-sub">Арга хэмжээний мэдээлэл, товлох огноогоо илгээгээрэй.<br>Бид 24 цагийн дотор буцаж холбогдоно.</p>
-    <button class="btn-primary center-btn" type="button" data-quote-open>ҮНИЙН САНАЛ АВАХ →</button>
-    <div class="contact-options">
-      <div class="contact-opt">
-        <div class="co-label">Утас</div>
-        <div class="co-val">+976 9924 5574</div>
+  
+<section id="contact" class="contact-section">
+  <div class="contact-content">
+    <div class="section-tag">ХОЛБОО БАРИХ</div>
+    <h2 class="section-title">ЗАХИАЛГА ӨГӨХ</h2>
+    <p class="contact-sub">
+      Арга хэмжээний мэдээллээ үлдээгээрэй.<br>
+      Бид 24 цагийн дотор холбогдоно.
+    </p>
+
+    <button class="btn-primary center-btn" data-quote-open>
+      ҮНИЙН САНАЛ АВАХ →
+    </button>
+
+    <div class="contact-info">
+      <div class="info-item">
+        <span>УТАС</span>
+        <a href="tel:+97699245574">+976 9924 5574</a>
       </div>
-      <div class="contact-opt">
-        <div class="co-label">Имэйл</div>
-        <div class="co-val">novaxstage@gmail.com</div>
-      </div>
-      <div class="contact-opt">
-        <div class="co-label">Хаяг</div>
-        <div class="co-val">Улаанбаатар, Монгол</div>
+
+      <div class="info-item">
+        <span>ИМЭЙЛ</span>
+        <a href="mailto:novaxstage@gmail.com">novaxstage@gmail.com</a>
       </div>
     </div>
-  </section>
+
+    <div class="contact-copy">
+      © 2026 БҮХ ЭРХ ХУУЛИАР ХАМГААЛАГДСАН
+    </div>
+  </div>
+</section>
+
 
 
   <!-- QUOTE MODAL -->
