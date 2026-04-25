@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NOVAX STAGE – Тайз, гэрэл, дууны мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээс, угсралт">
+  <meta name="description" content="NovaX – Тайз, гэрэл, дуугарлын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээс">
   <title>NovaX – Stage · Light · Sound</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- NAV -->
   <nav id="navbar">
-    <div class="logo"><img src="novax-logo.png" alt="NOVAX STAGE logo"></div>
+    <div class="logo">
+  <img src="novax-logo.png" alt="NOVAX STAGE logo">
+</div>
     <ul class="nav-links">
       <li><a href="#services">Үйлчилгээ</a></li>
       <li><a href="#equipment">Тоног</a></li>
@@ -36,11 +39,11 @@
       <h1 class="hero-title">
         ТАЙЗ<br>
         ГЭРЭЛ<br>
-        <em>ДУУГАРАЛТ</em>
+        <em>ДУУСГАЛ</em>
       </h1>
       <p class="hero-sub">
         Арга хэмжээний тоног төхөөрөмж — худалдаа, түрээс, монтаж.<br>
-        Мэргэжлийн гэрэл, дуу, тайзны цогц шийдэл.
+        Мэргэжлийн техникийн шийдэл.
       </p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="scrollTo('services')">Үйлчилгээ харах</button>
@@ -51,7 +54,7 @@
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-num">200+</div>
-        <div class="stat-label">Амжилттай ажил</div>
+        <div class="stat-label">Амжилтай ажил</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">8+</div>
@@ -59,7 +62,7 @@
       </div>
       <div class="stat-item">
         <div class="stat-num">50+</div>
-        <div class="stat-label">Брэндийн тоног төхөөрөмж</div>
+        <div class="stat-label">Брэндийн тоног</div>
       </div>
     </div>
   </section>
@@ -82,7 +85,7 @@
           </svg>
         </div>
         <div class="service-name">Тайзны систем</div>
-        <div class="service-desc">Тайз, трасс, хийц угсралт болон бүх төрлийн тайзны бүтцийн шийдэл</div>
+        <div class="service-desc">Тайз, трасс, хийц угсралт, нуурын нум болон бүх төрлийн тайзны бүтэц</div>
       </div>
 
       <div class="service-card" data-service="light" onclick="showService('light', this)">
@@ -115,8 +118,8 @@
             <path d="M30 20 C34 22 34 26 30 28" stroke="#888" stroke-width="1" fill="none"/>
           </svg>
         </div>
-        <div class="service-name">Дууны систем</div>
-        <div class="service-desc">Line array, subwoofer, mixer, monitor, wireless mic системийн цогц шийдэл</div>
+        <div class="service-name">Дуу чимэг</div>
+        <div class="service-desc">Line array, subwoofer, mixer, monitor, wireless mic системийн бүрэн шийдэл</div>
       </div>
     </div>
 
@@ -124,13 +127,13 @@
     <div class="service-detail visible" id="detail-stage">
       <div class="detail-text-col">
         <div class="detail-title">ТАЙЗНЫ СИСТЕМ</div>
-        <p class="detail-desc">Концерт, фестиваль, корпоратив, шоу арга хэмжээнд зориулсан бүх хэмжээний тайз, трасс, хийц. Угсралт, буулгалтыг мэргэжлийн багаар гүйцэтгэнэ.</p>
+        <p class="detail-desc">Концерт, фестиваль, корпорат, шоу арга хэмжээнд зориулсан бүх хэмжээний тайз, трасс, хийц. Монтаж, монтажийг мэргэжлийн багаар гүйцэтгэнэ.</p>
         <ul class="detail-list">
-          <li>Модуль тайзны систем — 4×8м, 6×10м, 8×12м</li>
+          <li>Гагнуурын тусгай тайз — 4×8м, 6×10м, 8×12м</li>
           <li>Алюмин трасс систем — Trusst, Global Truss</li>
-          <li>Өргүүр, хийц — 1000 кг хүртэлх ачаалал</li>
-          <li>Тайзны бүрээс, хаалт, декор</li>
-          <li>Угсралт, буулгалт, тээвэр багтана</li>
+          <li>Автомат хийц — 1000кг хүртэлх ачаалал</li>
+          <li>Тайзны шат , хаалт, декор</li>
+          <li>Угсралт, буулгалт, тээвэр хамтад</li>
         </ul>
       </div>
       <div class="detail-visual">
@@ -144,7 +147,7 @@
     <div class="service-detail" id="detail-light">
       <div class="detail-text-col">
         <div class="detail-title">ГЭРЭЛТҮҮЛЭГ</div>
-        <p class="detail-desc">Тоглолт, хурал, үзэсгэлэн, клуб, арга хэмжээнд зориулсан мэргэжлийн гэрлийн систем. Программчлал болон операторын үйлчилгээ багтана.</p>
+        <p class="detail-desc">Тоглолт, хурал, үзэсгэлэн, клуб, арга хэмжээнд зориулсан мэргэжлийн гэрлийн систем. Программчлал, операторын үйлчилгээ хамтад.</p>
         <ul class="detail-list">
           <li>Moving head — Beam, Spot, Wash</li>
           <li>LED пар, стробоскоп, эффект гэрэл</li>
@@ -163,8 +166,8 @@
 
     <div class="service-detail" id="detail-sound">
       <div class="detail-text-col">
-        <div class="detail-title">ДУУНЫ СИСТЕМ</div>
-        <p class="detail-desc">JBL, L-Acoustics, Yamaha, Shure брэндийн тоног. 100-аас 10,000+ хүний суудалтай арга хэмжээнд зориулсан дууны систем.</p>
+        <div class="detail-title">ДУУ ЧИМЭГ</div>
+        <p class="detail-desc">JBL, L-Acoustics, Yamaha, Shure брэндийн тоног. 100-аас 10,000+ хүний суудалтай арга хэмжээнд зориулсан дуугарлын систем.</p>
         <ul class="detail-list">
           <li>Line array — JBL VTX, L-Acoustics K2</li>
           <li>Subwoofer — 18", 21" нэгжүүд</li>
@@ -287,14 +290,14 @@
     <div class="about-text">
       <div class="section-tag">Тухай</div>
       <h2 class="section-title">NOVAX<br>ГЭЖ ХЭН БЭ</h2>
-      <p>NOVAX STAGE нь 2016 оноос хойш Монголд тайз, гэрэл, дууны мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээс, угсралтын үйлчилгээ үзүүлж байна.</p>
-      <p>Манай баг арга хэмжээний техникийн бүх шаардлагыг нэг дороос шийдэж, мэргэжлийн угсралт, операторын үйлчилгээг хамт санал болгодог.</p>
-      <p>Концертоос корпоратив хурал, фестивалиас шоу арга хэмжээ хүртэл — NOVAX STAGE таны арга хэмжээнд мэргэжлийн өнгө төрх, хүчтэй дуугаралт, гоёмсог гэрлийн шийдэл бүрдүүлнэ.</p>
+      <p>NovaX нь 2016 оноос Монголд тайз, гэрэл, дуугарлын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээсийн үйлчилгээ үзүүлж байна.</p>
+      <p>Манай баг арга хэмжээний техникийн бүх шаардлагыг нэг дороос шийдэж, мэргэжлийн монтаж, операторын үйлчилгээг хамт санал болгодог.</p>
+      <p>Концертоос корпорат хурал, фестивалиас шоу арга хэмжээ хүртэл — NovaX таны арга хэмжээг мэргэжлийн өнгийг олгоно.</p>
     </div>
     <div class="about-grid">
       <div class="about-block">
         <div class="ab-num">200+</div>
-        <div class="ab-label">Амжилттай ажил</div>
+        <div class="ab-label">Амжилтай ажил</div>
       </div>
       <div class="about-block">
         <div class="ab-num">8</div>
@@ -302,11 +305,11 @@
       </div>
       <div class="about-block">
         <div class="ab-num">50+</div>
-        <div class="ab-label">Тоног төхөөрөмж</div>
+        <div class="ab-label">Тоног брэнд</div>
       </div>
       <div class="about-block">
         <div class="ab-num">24/7</div>
-        <div class="ab-label">Техникийн дэмжлэг</div>
+        <div class="ab-label">Техник дэмжлэг</div>
       </div>
     </div>
   </section>
@@ -320,11 +323,11 @@
     <div class="contact-options">
       <div class="contact-opt">
         <div class="co-label">Утас</div>
-        <div class="co-val">+976 9924-5574</div>
+        <div class="co-val">+976 99245574</div>
       </div>
       <div class="contact-opt">
         <div class="co-label">Имэйл</div>
-        <div class="co-val">novaxstage@gmail.com</div>
+        <div class="co-val">info@novax.mn</div>
       </div>
       <div class="contact-opt">
         <div class="co-label">Хаяг</div>
@@ -335,10 +338,10 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="logo"><img src="novax-logo.png" alt="NOVAX STAGE logo"></div>
-    <div class="footer-copy">© 2026 NOVAX STAGE. Бүх эрх хуулиар хамгаалагдсан.</div>
+    <div class="logo">Nova<span>X</span></div>
+    <div class="footer-copy">© 2026 NovaX. Бүх эрх хуулиар хамгаалагдсан.</div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
