@@ -162,6 +162,49 @@
     .quote-success p {
       margin-bottom: 22px;
     }
+  
+    /* NOVA FIX: force bigger clickable logo */
+    nav .logo,
+    footer .logo {
+      display: inline-flex !important;
+      align-items: center !important;
+      text-decoration: none !important;
+    }
+
+    nav .logo img {
+      height: 76px !important;
+      width: auto !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
+
+    footer .logo img {
+      height: 64px !important;
+      width: auto !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
+
+    nav#navbar {
+      min-height: 88px !important;
+    }
+
+    @media (max-width: 768px) {
+      nav .logo img {
+        height: 54px !important;
+      }
+
+      footer .logo img {
+        height: 48px !important;
+      }
+
+      nav#navbar {
+        min-height: 72px !important;
+      }
+    }
+
   </style>
 
 </head>
@@ -169,7 +212,7 @@
 
   <!-- NAV -->
   <nav id="navbar">
-    <div class="logo"><img src="novax-logo.png" alt="NOVAX STAGE logo"></div>
+    <a class="logo" href="#home" aria-label="NovaX home"><img src="novax-logo.png" alt="NOVAX STAGE logo"></a>
     <ul class="nav-links">
       <li><a href="#services">Үйлчилгээ</a></li>
       <li><a href="#equipment">Тоног</a></li>
@@ -177,7 +220,7 @@
       <li><a href="#about">Тухай</a></li>
       <li><a href="#contact">Холбоо</a></li>
     </ul>
-    <button class="nav-cta" type="button" data-quote-open>Захиалах</button>
+    <button class="nav-cta" type="button" data-scroll="contact">Захиалах</button>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -514,7 +557,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="logo"><img src="novax-logo.png" alt="NOVAX STAGE logo"></div>
+    <a class="logo" href="#home" aria-label="NovaX home"><img src="novax-logo.png" alt="NOVAX STAGE logo"></a>
     <div class="footer-copy">© 2026 NovaX Stage. Бүх эрх хуулиар хамгаалагдсан.</div>
   </footer>
 

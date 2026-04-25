@@ -44,6 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Logo click goes to home
+  document.querySelectorAll('.logo[href^="#"]').forEach(link => {
+    link.addEventListener('click', (event) => {
+      const id = link.getAttribute('href').replace('#', '');
+      if (id) {
+        event.preventDefault();
+        scrollToSection(id);
+      }
+      navLinks?.classList.remove('open');
+    });
+  });
+
   // Buttons with data-scroll
   document.querySelectorAll('[data-scroll]').forEach(button => {
     button.addEventListener('click', () => {
