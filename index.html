@@ -130,6 +130,38 @@
     .quote-submit:hover {
       transform: translateY(-1px);
     }
+
+    .quote-success {
+      display: none;
+      text-align: center;
+      padding: 14px 0 4px;
+    }
+
+    .quote-success.show {
+      display: block;
+    }
+
+    .quote-success-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2f6fff, #00b7ff);
+      box-shadow: 0 0 28px rgba(47, 111, 255, 0.45);
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .quote-success h3 {
+      margin: 0 0 10px;
+      font-size: 36px;
+    }
+
+    .quote-success p {
+      margin-bottom: 22px;
+    }
   </style>
 
 </head>
@@ -462,7 +494,7 @@
       <h3 id="quoteTitle">Үнийн санал авах</h3>
       <p>Нэр, утас, имэйл болон арга хэмжээний мэдээллээ үлдээгээрэй. Бид 24 цагийн дотор холбогдоно.</p>
 
-      <form class="quote-form" action="https://formspree.io/f/mgorqynz" method="POST">
+      <form class="quote-form" id="quoteForm" action="https://formspree.io/f/mgorqynz" method="POST">
         <input type="text" name="name" placeholder="Таны нэр" required>
         <input type="tel" name="phone" placeholder="Утасны дугаар" required>
         <input type="email" name="email" placeholder="Имэйл хаяг" required>
@@ -470,6 +502,13 @@
         <input type="hidden" name="_subject" value="NovaX Stage - Үнийн санал авах хүсэлт">
         <button class="quote-submit" type="submit">Дуусгах</button>
       </form>
+
+      <div class="quote-success" id="quoteSuccess">
+        <div class="quote-success-icon">✓</div>
+        <h3>Баярлалаа!</h3>
+        <p>Таны хүсэлт амжилттай илгээгдлээ. Бид 24 цагийн дотор холбогдох болно.</p>
+        <button class="quote-submit" type="button" data-quote-close>Хаах</button>
+      </div>
     </div>
   </div>
 

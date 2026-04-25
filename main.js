@@ -53,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Quote modal
   const quoteModal = document.getElementById('quoteModal');
+  const quoteForm = document.getElementById('quoteForm');
+  const quoteSuccess = document.getElementById('quoteSuccess');
   const openQuoteButtons = document.querySelectorAll('[data-quote-open]');
   const closeQuoteButtons = document.querySelectorAll('[data-quote-close]');
 
@@ -61,6 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     quoteModal.classList.add('open');
     quoteModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+
+    if (quoteForm && quoteSuccess) {
+      quoteForm.reset();
+      quoteForm.style.display = 'grid';
+      quoteSuccess.classList.remove('show');
+    }
   }
 
   function closeQuoteModal() {
@@ -87,6 +95,39 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeQuoteModal();
+    }
+  });
+
+  // Submit Formspree without leaving the website
+  quoteForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const submitButton = quoteForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = 'Илгээж байна...';
+    submitButton.disabled = true;
+
+    try {
+      const response = await fetch(quoteForm.action, {
+        method: 'POST',
+        body: new FormData(quoteForm),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        quoteForm.reset();
+        closeQuoteModal();
+        scrollToSection('home');
+      } else {
+        alert('Илгээхэд алдаа гарлаа. Дахин оролдоно уу.');
+      }
+    } catch (error) {
+      alert('Интернет холболт эсвэл серверийн алдаа гарлаа.');
+    } finally {
+      submitButton.textContent = originalText;
+      submitButton.disabled = false;
     }
   });
 
