@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NovaX – Тайз, гэрэл, дуугарлын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээс">
+  <title>NovaX – Stage · Light · Sound</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="logo">Nova<span>X</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Үйлчилгээ</a></li>
+      <li><a href="#equipment">Тоног</a></li>
+      <li><a href="#projects">Ажлууд</a></li>
+      <li><a href="#about">Тухай</a></li>
+      <li><a href="#contact">Холбоо</a></li>
+    </ul>
+    <button class="nav-cta" onclick="scrollTo('contact')">Захиалга</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Stage · Light · Sound</div>
+      <h1 class="hero-title">
+        ТАЙЗ<br>
+        ГЭРЭЛ<br>
+        <em>ДУУСГАЛ</em>
+      </h1>
+      <p class="hero-sub">
+        Арга хэмжээний тоног төхөөрөмж — худалдаа, түрээс, монтаж.<br>
+        Мэргэжлийн техникийн шийдэл.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="scrollTo('services')">Үйлчилгээ харах</button>
+        <button class="btn-ghost" onclick="scrollTo('equipment')">Тоног үзэх</button>
+      </div>
+    </div>
+    <div class="hero-line"></div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Амжилтай ажил</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Жилийн туршлага</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Брэндийн тоног</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-tag">Үйлчилгээ</div>
+    <h2 class="section-title">БИДНИЙ<br>ЧИГЛЭЛҮҮД</h2>
+
+    <div class="services-grid">
+      <div class="service-card active" data-service="stage" onclick="showService('stage', this)">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="32" width="40" height="6" stroke="#c8ff00" stroke-width="1.5"/>
+            <rect x="12" y="14" width="4" height="18" stroke="#888" stroke-width="1.5"/>
+            <rect x="32" y="14" width="4" height="18" stroke="#888" stroke-width="1.5"/>
+            <line x1="16" y1="14" x2="32" y2="14" stroke="#888" stroke-width="1.5"/>
+            <line x1="4" y1="32" x2="12" y2="14" stroke="#555" stroke-width="1"/>
+            <line x1="44" y1="32" x2="36" y2="14" stroke="#555" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="service-name">Тайзны систем</div>
+        <div class="service-desc">Тайз, трасс, хийц угсралт, нуурын нум болон бүх төрлийн тайзны бүтэц</div>
+      </div>
+
+      <div class="service-card" data-service="light" onclick="showService('light', this)">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="20" r="8" stroke="#c8ff00" stroke-width="1.5"/>
+            <line x1="24" y1="4" x2="24" y2="10" stroke="#888" stroke-width="1.5"/>
+            <line x1="24" y1="30" x2="24" y2="36" stroke="#888" stroke-width="1.5"/>
+            <line x1="8" y1="20" x2="14" y2="20" stroke="#888" stroke-width="1.5"/>
+            <line x1="34" y1="20" x2="40" y2="20" stroke="#888" stroke-width="1.5"/>
+            <line x1="13" y1="9" x2="17.2" y2="13.2" stroke="#888" stroke-width="1.5"/>
+            <line x1="30.8" y1="26.8" x2="35" y2="31" stroke="#888" stroke-width="1.5"/>
+            <line x1="35" y1="9" x2="30.8" y2="13.2" stroke="#888" stroke-width="1.5"/>
+            <line x1="17.2" y1="26.8" x2="13" y2="31" stroke="#888" stroke-width="1.5"/>
+            <rect x="20" y="36" width="8" height="8" stroke="#555" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="service-name">Гэрэлтүүлэг</div>
+        <div class="service-desc">LED wash, moving head, laser, strobe болон мэргэжлийн арга хэмжээний гэрэл</div>
+      </div>
+
+      <div class="service-card" data-service="sound" onclick="showService('sound', this)">
+        <div class="service-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="12" width="14" height="24" rx="2" stroke="#c8ff00" stroke-width="1.5"/>
+            <circle cx="13" cy="30" r="4" stroke="#888" stroke-width="1"/>
+            <circle cx="13" cy="18" r="2" stroke="#888" stroke-width="1"/>
+            <path d="M26 10 C38 16 38 32 26 38" stroke="#888" stroke-width="1.5" fill="none"/>
+            <path d="M28 16 C36 20 36 28 28 32" stroke="#555" stroke-width="1" fill="none"/>
+            <path d="M30 20 C34 22 34 26 30 28" stroke="#888" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <div class="service-name">Дуу чимэг</div>
+        <div class="service-desc">Line array, subwoofer, mixer, monitor, wireless mic системийн бүрэн шийдэл</div>
+      </div>
+    </div>
+
+    <!-- Service Details -->
+    <div class="service-detail visible" id="detail-stage">
+      <div class="detail-text-col">
+        <div class="detail-title">ТАЙЗНЫ СИСТЕМ</div>
+        <p class="detail-desc">Концерт, фестиваль, корпорат, шоу арга хэмжээнд зориулсан бүх хэмжээний тайз, трасс, хийц. Монтаж, демонтажийг мэргэжлийн багаар гүйцэтгэнэ.</p>
+        <ul class="detail-list">
+          <li>Гагнуурын тусгай тайз — 4×8м, 6×10м, 8×12м</li>
+          <li>Алюмин трасс систем — Trusst, Global Truss</li>
+          <li>Автомат хийц — 1000кг хүртэлх ачаалал</li>
+          <li>Тайзны буртмал, хаалт, декор</li>
+          <li>Угсралт, буулгалт, тээвэр хамтад</li>
+        </ul>
+      </div>
+      <div class="detail-visual">
+        <div class="dv-block accent">Тайз</div>
+        <div class="dv-block">Трасс</div>
+        <div class="dv-block">Хийц</div>
+        <div class="dv-block accent">Монтаж</div>
+      </div>
+    </div>
+
+    <div class="service-detail" id="detail-light">
+      <div class="detail-text-col">
+        <div class="detail-title">ГЭРЭЛТҮҮЛЭГ</div>
+        <p class="detail-desc">Тоглолт, хурал, үзэсгэлэн, клуб, арга хэмжээнд зориулсан мэргэжлийн гэрлийн систем. Программчлал, операторын үйлчилгээ хамтад.</p>
+        <ul class="detail-list">
+          <li>Moving head — Beam, Spot, Wash</li>
+          <li>LED пар, стробоскоп, эффект гэрэл</li>
+          <li>Лазер — RGB 3W, 5W, 10W</li>
+          <li>DMX контроллер, MA Lighting, Avolites</li>
+          <li>Гэрлийн дизайн, программчлал</li>
+        </ul>
+      </div>
+      <div class="detail-visual">
+        <div class="dv-block accent">LED</div>
+        <div class="dv-block">Лазер</div>
+        <div class="dv-block">Moving</div>
+        <div class="dv-block accent">DMX</div>
+      </div>
+    </div>
+
+    <div class="service-detail" id="detail-sound">
+      <div class="detail-text-col">
+        <div class="detail-title">ДУУ ЧИМЭГ</div>
+        <p class="detail-desc">JBL, L-Acoustics, Yamaha, Shure брэндийн тоног. 100-аас 10,000+ хүний суудалтай арга хэмжээнд зориулсан дуугарлын систем.</p>
+        <ul class="detail-list">
+          <li>Line array — JBL VTX, L-Acoustics K2</li>
+          <li>Subwoofer — 18", 21" нэгжүүд</li>
+          <li>Digital mixer — Yamaha CL5, Allen &amp; Heath</li>
+          <li>Wireless mic — Shure Axient, UR4D</li>
+          <li>Monitor, IEM систем</li>
+        </ul>
+      </div>
+      <div class="detail-visual">
+        <div class="dv-block accent">Array</div>
+        <div class="dv-block">Sub</div>
+        <div class="dv-block">Mixer</div>
+        <div class="dv-block accent">Mic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPMENT -->
+  <section id="equipment" class="equipment-section">
+    <div class="section-tag">Тоног төхөөрөмж</div>
+    <h2 class="section-title">КАТАЛОГ</h2>
+    <div class="eq-grid">
+      <div class="eq-card">
+        <div class="eq-badge">Дуу</div>
+        <div class="eq-name">JBL VTX A12</div>
+        <div class="eq-model">Line Array System</div>
+        <div class="eq-type">Түрээс · Худалдаа</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-badge">Гэрэл</div>
+        <div class="eq-name">Robe BMFL</div>
+        <div class="eq-model">Moving Head Spot</div>
+        <div class="eq-type">Түрээс</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-badge">Тайз</div>
+        <div class="eq-name">Global Truss F34</div>
+        <div class="eq-model">Aluminum Truss System</div>
+        <div class="eq-type">Түрээс · Худалдаа</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-badge">Дуу</div>
+        <div class="eq-name">Yamaha CL5</div>
+        <div class="eq-model">Digital Console 96ch</div>
+        <div class="eq-type">Түрээс</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-badge">Гэрэл</div>
+        <div class="eq-name">Ayrton MagicBlade</div>
+        <div class="eq-model">LED Beam Bar</div>
+        <div class="eq-type">Түрээс</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-badge">Дуу</div>
+        <div class="eq-name">Shure Axient AD4Q</div>
+        <div class="eq-model">Wireless Receiver 4ch</div>
+        <div class="eq-type">Түрээс · Худалдаа</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-badge">Гэрэл</div>
+        <div class="eq-name">GLP impression X4</div>
+        <div class="eq-model">LED Moving Head Wash</div>
+        <div class="eq-type">Түрээс</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-badge">Тайз</div>
+        <div class="eq-name">Prolyte H30V</div>
+        <div class="eq-model">Heavy Duty Truss</div>
+        <div class="eq-type">Түрээс · Худалдаа</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects-section">
+    <div class="section-tag">Хийсэн ажлууд</div>
+    <h2 class="section-title">ТУРШЛАГА</h2>
+    <div class="projects-list">
+      <div class="project-row">
+        <div class="proj-num">01</div>
+        <div class="proj-name">УЛААНБААТАР РОК ФЕСТИВАЛЬ</div>
+        <div class="proj-meta">Тайз · Гэрэл · Дуу</div>
+        <div class="proj-year">2024</div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">02</div>
+        <div class="proj-name">МОНГОЛ ШУУДАН КОРПОРАТ</div>
+        <div class="proj-meta">Гэрэл · Дуу</div>
+        <div class="proj-year">2024</div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">03</div>
+        <div class="proj-name">НИЙСЛЭЛИЙН НААДАМ 2024</div>
+        <div class="proj-meta">Тайз · Гэрэл · Дуу</div>
+        <div class="proj-year">2024</div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">04</div>
+        <div class="proj-name">ЭРДЭНЭС ТАВАНТОЛГОЙ ХУРАЛ</div>
+        <div class="proj-meta">Дуу · Гэрэл</div>
+        <div class="proj-year">2023</div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">05</div>
+        <div class="proj-name">SKY RESORT OPENING</div>
+        <div class="proj-meta">Тайз · Гэрэл · Дуу</div>
+        <div class="proj-year">2023</div>
+      </div>
+      <div class="project-row">
+        <div class="proj-num">06</div>
+        <div class="proj-name">MONGOLIAN FASHION WEEK</div>
+        <div class="proj-meta">Тайз · Гэрэл</div>
+        <div class="proj-year">2023</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-text">
+      <div class="section-tag">Тухай</div>
+      <h2 class="section-title">NOVAX<br>ГЭЖ ХЭН БЭ</h2>
+      <p>NovaX нь 2016 оноос Монголд тайз, гэрэл, дуугарлын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээсийн үйлчилгээ үзүүлж байна.</p>
+      <p>Манай баг арга хэмжээний техникийн бүх шаардлагыг нэг дороос шийдэж, мэргэжлийн монтаж, операторын үйлчилгээг хамт санал болгодог.</p>
+      <p>Концертоос корпорат хурал, фестивалиас шоу арга хэмжээ хүртэл — NovaX таны арга хэмжээг мэргэжлийн өнгийг олгоно.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-block">
+        <div class="ab-num">200+</div>
+        <div class="ab-label">Амжилтай ажил</div>
+      </div>
+      <div class="about-block">
+        <div class="ab-num">8</div>
+        <div class="ab-label">Жилийн туршлага</div>
+      </div>
+      <div class="about-block">
+        <div class="ab-num">50+</div>
+        <div class="ab-label">Тоног брэнд</div>
+      </div>
+      <div class="about-block">
+        <div class="ab-num">24/7</div>
+        <div class="ab-label">Техник дэмжлэг</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="section-tag center">Холбоо барих</div>
+    <h2 class="section-title center">ЗАХИАЛГА<br>ӨГӨХ</h2>
+    <p class="contact-sub">Арга хэмжээний мэдээлэл, товлох огноогоо илгээгээрэй.<br>Бид 24 цагийн дотор буцаж холбогдоно.</p>
+    <button class="btn-primary center-btn">Дэлгэрэнгүй нөхцөл авах →</button>
+    <div class="contact-options">
+      <div class="contact-opt">
+        <div class="co-label">Утас</div>
+        <div class="co-val">+976 9900 0000</div>
+      </div>
+      <div class="contact-opt">
+        <div class="co-label">Имэйл</div>
+        <div class="co-val">info@novax.mn</div>
+      </div>
+      <div class="contact-opt">
+        <div class="co-label">Хаяг</div>
+        <div class="co-val">Улаанбаатар, Монгол</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo">Nova<span>X</span></div>
+    <div class="footer-copy">© 2024 NovaX. Бүх эрх хуулиар хамгаалагдсан.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
