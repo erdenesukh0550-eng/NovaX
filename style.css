@@ -13,7 +13,7 @@
   --white:   #f5f4f0;
   --gray:    #1a1a1a;
   --mid:     #2e2e2e;
-  --accent:  #c8ff00;
+  --accent:  #38bdf8;
   --muted:   #888888;
   --border:  rgba(255, 255, 255, 0.08);
 }
@@ -51,11 +51,17 @@ body {
 }
 
 .logo {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px;
-  letter-spacing: 4px;
-  color: var(--white);
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  min-width: 132px;
+}
+
+.logo img {
+  height: 42px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.45));
 }
 
 .logo span {
@@ -182,8 +188,8 @@ section {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(200,255,0,0.04) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200,255,0,0.02) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(56,189,248,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(59,130,246,0.08) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -193,7 +199,7 @@ section {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--accent);
-  border: 1px solid rgba(200, 255, 0, 0.3);
+  border: 1px solid rgba(56, 189, 248, 0.38);
   padding: 6px 16px;
   margin-bottom: 40px;
   width: fit-content;
@@ -283,8 +289,13 @@ section {
   transition: opacity 0.2s;
 }
 
+.btn-primary {
+  box-shadow: 0 0 24px rgba(56, 189, 248, 0.28);
+}
+
 .btn-primary:hover {
-  opacity: 0.85;
+  opacity: 0.9;
+  box-shadow: 0 0 34px rgba(56, 189, 248, 0.48);
 }
 
 .btn-primary.center-btn {
@@ -443,7 +454,7 @@ section {
 }
 
 .dv-block.accent {
-  background: rgba(200, 255, 0, 0.08);
+  background: rgba(56, 189, 248, 0.12);
   color: var(--accent);
 }
 
@@ -477,7 +488,7 @@ section {
   letter-spacing: 2px;
   text-transform: uppercase;
   padding: 4px 10px;
-  background: rgba(200, 255, 0, 0.1);
+  background: rgba(56, 189, 248, 0.14);
   color: var(--accent);
   display: inline-block;
   margin-bottom: 20px;

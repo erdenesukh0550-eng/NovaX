@@ -1,6 +1,6 @@
-# NovaX – Stage · Light · Sound
+# NOVAX STAGE – Stage · Light · Sound
 
-Мэргэжлийн тайз, гэрэл, дуугарлын тоног төхөөрөмжийн худалдаа, түрээсийн вэбсайт.
+Мэргэжлийн тайз, гэрэл, дууны тоног төхөөрөмжийн худалдаа, түрээсийн вэбсайт.
 
 ## Файл бүтэц
 
@@ -35,8 +35,8 @@ novax/
 `index.html` файлд утас, имэйл, хаягийг шинэчлэх:
 
 ```html
-<div class="co-val">+976 9900 0000</div>   <!-- Утас -->
-<div class="co-val">info@novax.mn</div>     <!-- Имэйл -->
+<div class="co-val">+976 9924-5574</div>   <!-- Утас -->
+<div class="co-val">novaxstage@gmail.com</div>     <!-- Имэйл -->
 ```
 
 ### Тоног нэмэх
@@ -62,11 +62,11 @@ novax/
 ```
 
 ### Өнгө өөрчлөх
-`css/style.css` файлын `:root` хэсэгт:
+`style.css` файлын `:root` хэсэгт:
 
 ```css
 :root {
-  --accent: #c8ff00;   /* Ногоон accent → өөр өнгөөр солих */
+  --accent: #38bdf8;   /* Ногоон accent → өөр өнгөөр солих */
   --black:  #0a0a0a;   /* Дэвсгэр өнгө */
 }
 ```
