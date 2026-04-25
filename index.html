@@ -41,8 +41,8 @@
         Мэргэжлийн техникийн шийдэл.
       </p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="scrollTo('services')">Үйлчилгээ харах</button>
-        <button class="btn-ghost" onclick="scrollTo('equipment')">Тоног үзэх</button>
+        <button class="btn-primary" data-scroll="services">Үйлчилгээ харах</button>
+        <button class="btn-ghost" data-scroll="equipment">Тоног үзэх</button>
       </div>
     </div>
     <div class="hero-line"></div>
@@ -68,7 +68,7 @@
     <h2 class="section-title">БИДНИЙ<br>ЧИГЛЭЛҮҮД</h2>
 
     <div class="services-grid">
-      <div class="service-card active" data-service="stage" onclick="showService('stage', this)">
+      <div class="service-card active" data-service="stage">
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="4" y="32" width="40" height="6" stroke="#c8ff00" stroke-width="1.5"/>
@@ -83,7 +83,7 @@
         <div class="service-desc">Тайз, трасс, нуман хийц болон бүх төрлийн тайзны угсралт</div>
       </div>
 
-      <div class="service-card" data-service="light" onclick="showService('light', this)">
+      <div class="service-card" data-service="light">
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="24" cy="20" r="8" stroke="#c8ff00" stroke-width="1.5"/>
@@ -102,7 +102,7 @@
         <div class="service-desc">LED wash, moving head, laser, strobe болон мэргэжлийн арга хэмжээний гэрэл</div>
       </div>
 
-      <div class="service-card" data-service="sound" onclick="showService('sound', this)">
+      <div class="service-card" data-service="sound">
         <div class="service-icon">
           <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="6" y="12" width="14" height="24" rx="2" stroke="#c8ff00" stroke-width="1.5"/>
@@ -315,7 +315,7 @@
     <div class="section-tag center">Холбоо барих</div>
     <h2 class="section-title center">ЗАХИАЛГА<br>ӨГӨХ</h2>
     <p class="contact-sub">Арга хэмжээний мэдээлэл, товлох огноогоо илгээгээрэй.<br>Бид 24 цагийн дотор буцаж холбогдоно.</p>
-    <button class="btn-primary center-btn">Үнийн санал авах →</button>
+    <button class="btn-primary center-btn" data-scroll="contact">Үнийн санал авах →</button>
     <div class="contact-options">
       <div class="contact-opt">
         <div class="co-label">Утас</div>
