@@ -1,11 +1,16 @@
 /* ===========================
-   NovaX – main.js
+   NovaX – main.js (FIXED)
    =========================== */
 
 // Smooth scroll helper
 function scrollTo(id) {
   const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
+  if (el) {
+    el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
 }
 
 // Navbar scroll effect
@@ -33,22 +38,23 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
+// ✅ NAV CTA (Захиалах button FIX)
+document.querySelector('.nav-cta')?.addEventListener('click', () => {
+  scrollTo('contact');
+});
+
 // Service tab switcher
 function showService(type, el) {
-  // Remove active from all cards
   document.querySelectorAll('.service-card').forEach(card => {
     card.classList.remove('active');
   });
 
-  // Hide all details
   document.querySelectorAll('.service-detail').forEach(detail => {
     detail.classList.remove('visible');
   });
 
-  // Activate clicked card
   el.classList.add('active');
 
-  // Show matching detail
   const detail = document.getElementById('detail-' + type);
   if (detail) {
     detail.classList.add('visible');
