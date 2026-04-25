@@ -22,6 +22,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Auto hide navbar on scroll down, show on scroll up
+  let lastScrollY = window.scrollY;
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 10) {
+        navbar.style.transform = 'translateY(0)';
+      } else if (currentScrollY > lastScrollY && currentScrollY > 120) {
+        navbar.style.transform = 'translateY(-110%)';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+      }
+
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  }
+
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.querySelector('.nav-links');
