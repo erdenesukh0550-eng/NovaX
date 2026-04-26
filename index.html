@@ -1,183 +1,36 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NovaX Stage – Тайз, гэрэл, дуугаралт, LED дэлгэц, event production үйлчилгээ." />
-  <title>NovaX Stage – Stage · Light · Sound</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaX Stage - Next Level</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="progress" id="progress"></div>
 
-  <nav id="navbar" class="navbar">
-    <a class="brand" href="#home" aria-label="NovaX Stage home">
-      <img src="novax-logo.png" alt="NovaX Stage logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span class="brand-text">NovaX</span>
-    </a>
+<section class="hero">
+  <h1>N.O.V.A</h1>
+  <p>WE DON'T JUST SETUP EVENTS. WE CREATE EXPERIENCES.</p>
+</section>
 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Үйлчилгээ</a></li>
-      <li><a href="#equipment">Тоног</a></li>
-      <li><a href="#projects">Ажлууд</a></li>
-      <li><a href="#about">Тухай</a></li>
-      <li><a href="#contact">Холбоо</a></li>
-    </ul>
-
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <header id="home" class="hero">
-    <div class="hero-orb"></div>
-    <div class="hero-content reveal">
-      <p class="eyebrow">Stage · Light · Sound · LED</p>
-      <h1>WE CREATE<br><em>EXPERIENCES</em></h1>
-      <p class="hero-sub">NovaX Stage нь тайз, гэрэл, дуугаралт, LED дэлгэцийн мэргэжлийн шийдлийг нэг дороос санал болгодог.</p>
-      <div class="hero-actions">
-        <button class="btn btn-primary" data-quote-open type="button">Үнийн санал авах</button>
-        <a class="btn btn-ghost" href="#services">Үйлчилгээ үзэх</a>
-      </div>
-    </div>
-
-    <div class="hero-stats reveal">
-      <div><strong>200+</strong><span>Амжилттай ажил</span></div>
-      <div><strong>30</strong><span>Жилийн туршлага</span></div>
-      <div><strong>24/7</strong><span>Техник дэмжлэг</span></div>
-    </div>
-  </header>
-
-  <main>
-    <section id="services" class="section services-section">
-      <div class="section-head reveal">
-        <p class="eyebrow">Үйлчилгээ</p>
-        <h2>Бүх техникийн шийдэл<br>нэг дор</h2>
-      </div>
-
-      <div class="service-grid">
-        <article class="service-card reveal">
-          <div class="icon">♪</div>
-          <h3>Дуугаралт</h3>
-          <p>Line array, subwoofer, mixer, monitor, wireless mic систем.</p>
-        </article>
-        <article class="service-card reveal">
-          <div class="icon">✦</div>
-          <h3>Гэрэлтүүлэг</h3>
-          <p>Moving head, beam, wash, laser, strobe, DMX control.</p>
-        </article>
-        <article class="service-card reveal">
-          <div class="icon">▦</div>
-          <h3>LED дэлгэц</h3>
-          <p>Stage LED wall, visual content, screen setup, media control.</p>
-        </article>
-        <article class="service-card reveal">
-          <div class="icon">▱</div>
-          <h3>Тайз угсралт</h3>
-          <p>Тайз, truss, rigging, монтаж, буулгалт, тээвэр.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="equipment" class="section equipment-section">
-      <div class="section-head reveal">
-        <p class="eyebrow">Тоног төхөөрөмж</p>
-        <h2>Professional equipment</h2>
-      </div>
-
-      <div class="equipment-grid">
-        <div class="equipment-card reveal"><span>Sound</span><h3>Line Array System</h3><p>JBL · L-Acoustics · Yamaha</p></div>
-        <div class="equipment-card reveal"><span>Light</span><h3>Moving Head / Beam</h3><p>Robe · Ayrton · GLP</p></div>
-        <div class="equipment-card reveal"><span>Stage</span><h3>Truss & Rigging</h3><p>Global Truss · Prolyte</p></div>
-        <div class="equipment-card reveal"><span>LED</span><h3>LED Screen</h3><p>Indoor · Outdoor · Control</p></div>
-      </div>
-    </section>
-
-    <section id="projects" class="section projects-section">
-      <div class="section-head reveal">
-        <p class="eyebrow">Хийсэн ажлууд</p>
-        <h2>Selected projects</h2>
-      </div>
-
-      <div class="project-list">
-        <div class="project-row reveal"><span>01</span><strong>Улаанбаатар рок фестиваль</strong><em>Stage · Light · Sound</em><b>2024</b></div>
-        <div class="project-row reveal"><span>02</span><strong>Corporate conference</strong><em>Sound · LED · Lighting</em><b>2024</b></div>
-        <div class="project-row reveal"><span>03</span><strong>Нийслэлийн наадам</strong><em>Full production</em><b>2024</b></div>
-        <div class="project-row reveal"><span>04</span><strong>Fashion & Show event</strong><em>Runway · Light</em><b>2023</b></div>
-      </div>
-    </section>
-
-    <section id="about" class="section about-section">
-      <div class="about-copy reveal">
-        <p class="eyebrow">Тухай</p>
-        <h2>NovaX Stage</h2>
-        <p>NovaX Stage нь 1996 оноос хойш тайз, гэрэл, дуугаралтын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээсийн үйлчилгээ үзүүлж байна.</p>
-        <p>Бид эвентийн техникийн бүх шийдлийг нэг дороос хангаж, найдвартай, чанартай гүйцэтгэл үзүүлдэг.</p>
-      </div>
-      <div class="about-numbers">
-        <div class="number-card reveal"><strong>200+</strong><span>Амжилттай ажил</span></div>
-        <div class="number-card reveal"><strong>30</strong><span>Жилийн туршлага</span></div>
-        <div class="number-card reveal"><strong>50+</strong><span>Тоног брэнд</span></div>
-        <div class="number-card reveal"><strong>24/7</strong><span>Дэмжлэг</span></div>
-      </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-      <div class="contact-content reveal">
-        <p class="eyebrow">Холбоо барих</p>
-        <h2>Захиалга өгөх</h2>
-        <p>Арга хэмжээний мэдээллээ үлдээгээрэй. Бид 24 цагийн дотор холбогдоно.</p>
-        <button class="btn btn-primary" data-quote-open type="button">Үнийн санал авах</button>
-      </div>
-
-      <div class="contact-cards">
-        <a class="contact-card reveal" href="tel:+97699245574">
-          <span>Утас</span><strong>+976 9924 5574</strong>
-        </a>
-        <a class="contact-card reveal" href="mailto:novaxstage@gmail.com">
-          <span>Имэйл</span><strong>novaxstage@gmail.com</strong>
-        </a>
-        <div class="contact-card reveal">
-          <span>Хаяг</span><strong>Улаанбаатар, Монгол</strong>
-        </div>
-      </div>
-
-      <div class="socials reveal">
-        <a href="https://www.facebook.com/people/NOVA-X-STAGE/100083360228173/" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.instagram.com/novaxstage/" target="_blank" rel="noopener">Instagram</a>
-      </div>
-
-      <p class="copyright">© 2026 NovaX Stage. Бүх эрх хуулиар хамгаалагдсан.</p>
-    </section>
-  </main>
-
-  <div class="modal" id="quoteModal" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
-      <button class="modal-close" type="button" data-quote-close aria-label="Close">×</button>
-      <h3 id="quoteTitle">Үнийн санал авах</h3>
-      <p>Нэр, утас, имэйл болон арга хэмжээний мэдээллээ үлдээгээрэй.</p>
-
-      <form id="quoteForm" action="https://formspree.io/f/mgorqynz" method="POST">
-        <input type="text" name="name" placeholder="Таны нэр" required>
-        <input type="tel" name="phone" placeholder="Утасны дугаар" required>
-        <input type="email" name="email" placeholder="Имэйл хаяг" required>
-        <textarea name="message" placeholder="Арга хэмжээний төрөл, огноо, хэрэгтэй тоног төхөөрөмж..." required></textarea>
-        <input type="hidden" name="_subject" value="NovaX Stage - Үнийн санал авах хүсэлт">
-        <button class="btn btn-primary form-submit" type="submit">Дуусгах</button>
-      </form>
-
-      <div class="success" id="quoteSuccess">
-        <div class="success-icon">✓</div>
-        <h3>Баярлалаа!</h3>
-        <p>Таны хүсэлт амжилттай илгээгдлээ.</p>
-        <button class="btn btn-primary" data-quote-close type="button">Хаах</button>
-      </div>
-    </div>
+<section class="projects">
+  <h2>PROJECTS</h2>
+  <div class="grid">
+    <div class="card">Concert Stage</div>
+    <div class="card">Festival Setup</div>
+    <div class="card">Corporate Event</div>
   </div>
+</section>
 
-  <script src="main.js"></script>
+<section class="clients">
+  <h2>CLIENTS</h2>
+  <p>Trusted by leading brands</p>
+</section>
+
+<section class="contact">
+  <h2>CONTACT</h2>
+  <p>novaxstage@gmail.com</p>
+</section>
+
 </body>
 </html>
