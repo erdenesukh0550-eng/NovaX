@@ -199,3 +199,44 @@ h1,h2,h3{font-family:"Bebas Neue",Arial,sans-serif;font-weight:400;margin:0}.her
   transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(47,125,255,.25);
 }
+
+
+/* N.O.V.A background sound button */
+.sound-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1800;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(84,151,255,.38);
+  background: rgba(7,17,36,.72);
+  color: #f2f7ff;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 16px 42px rgba(0,0,0,.32), 0 0 24px rgba(47,125,255,.16);
+  cursor: pointer;
+  font-weight: 900;
+  letter-spacing: .06em;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.sound-toggle:hover {
+  transform: translateY(-3px);
+  border-color: rgba(101,167,255,.78);
+  box-shadow: 0 20px 52px rgba(0,0,0,.40), 0 0 30px rgba(47,125,255,.24);
+}
+.sound-toggle.playing {
+  background: linear-gradient(135deg, rgba(47,125,255,.88), rgba(0,183,255,.68));
+}
+@media (max-width: 640px) {
+  .sound-toggle {
+    right: 16px;
+    bottom: 16px;
+    padding: 10px 13px;
+  }
+  .sound-toggle .sound-text {
+    display: none;
+  }
+}

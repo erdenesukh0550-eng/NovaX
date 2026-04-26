@@ -107,4 +107,50 @@ document.addEventListener("DOMContentLoaded", () => {
       submit.disabled = false;
     }
   });
+
+  // N.O.V.A background sound toggle
+  const soundToggle = document.getElementById("soundToggle");
+  const novaBgm = document.getElementById("novaBgm");
+  let novaSoundPlaying = false;
+  let novaFadeTimer = null;
+
+  function fadeAudio(targetVolume) {
+    if (!novaBgm) return;
+    clearInterval(novaFadeTimer);
+    novaFadeTimer = setInterval(() => {
+      const diff = targetVolume - novaBgm.volume;
+      if (Math.abs(diff) < 0.006) {
+        novaBgm.volume = targetVolume;
+        clearInterval(novaFadeTimer);
+        return;
+      }
+      novaBgm.volume = Math.max(0, Math.min(0.08, novaBgm.volume + diff * 0.18));
+    }, 80);
+  }
+
+  soundToggle?.addEventListener("click", async () => {
+    if (!novaBgm) return;
+
+    if (!novaSoundPlaying) {
+      try {
+        novaBgm.volume = 0;
+        await novaBgm.play();
+        novaSoundPlaying = true;
+        soundToggle.classList.add("playing");
+        soundToggle.querySelector(".sound-on").textContent = "🔇";
+        fadeAudio(0.055);
+      } catch (err) {
+        console.warn("Audio play blocked:", err);
+      }
+    } else {
+      fadeAudio(0);
+      setTimeout(() => {
+        novaBgm.pause();
+        novaSoundPlaying = false;
+        soundToggle.classList.remove("playing");
+        soundToggle.querySelector(".sound-on").textContent = "🔊";
+      }, 650);
+    }
+  });
+
 });
