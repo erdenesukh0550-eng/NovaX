@@ -1,35 +1,192 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaX Stage</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NovaX Тайз – Тайз, гэрэл, дуугаралт, LED дэлгэц, event production үйлчилгээ." />
+  <title>NovaX Тайз – Next Level</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="progress" id="progress"></div>
 
-<header class="hero">
-  <h1>БИД МАРТАГДАШГҮЙ<br>ТУРШЛАГА БҮТЭЭДЭГ</h1>
-  <p>Тайз, гэрэл, дуугаралт, LED дэлгэцийн мэргэжлийн шийдэл</p>
-  <a href="#contact" class="btn">ҮНИЙН САНАЛ АВАХ</a>
-</header>
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="brand" aria-label="NovaX home">
+      <img src="novax-logo.png" alt="NovaX Тайз logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <span class="brand-fallback">NovaX</span>
+    </a>
 
-<section id="services">
-  <h2>Үйлчилгээ</h2>
-  <div class="grid">
-    <div class="card">Sound</div>
-    <div class="card">Lighting</div>
-    <div class="card">LED</div>
-    <div class="card">Stage</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Үйлчилгээ</a></li>
+      <li><a href="#projects">Ажлууд</a></li>
+      <li><a href="#equipment">Тоног</a></li>
+      <li><a href="#about">Тухай</a></li>
+      <li><a href="#contact">Холбоо</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <header id="home" class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content reveal">
+      <p class="eyebrow">Тайз · Light · Дуугаралт · LED</p>
+      <h1>БИД МАРТАГДАШГҮЙ<br><span>ТУРШЛАГА БҮТЭЭДЭГ</span></h1>
+      <p class="hero-sub">Тайз, гэрэл, дуугаралт, LED дэлгэцийн мэргэжлийн шийдлийг нэг дороос санал болгодог.</p>
+      <div class="hero-actions">
+        <button class="btn primary" type="button" data-quote-open>Үнийн санал авах</button>
+        <a class="btn ghost" href="#projects">Ажлууд үзэх</a>
+      </div>
+    </div>
+
+    <div class="hero-metrics reveal">
+      <div><strong>200+</strong><span>Амжилттай ажил</span></div>
+      <div><strong>30</strong><span>Жилийн туршлага</span></div>
+      <div><strong>24/7</strong><span>Техник дэмжлэг</span></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="services" class="section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Үйлчилгээ</p>
+        <h2>Эвентийн цогц шийдэл</h2>
+        <p>Дуу, гэрэл, LED, тайз угсралт — нэг баг, нэг шийдэл.</p>
+      </div>
+
+      <div class="cards four">
+        <article class="card reveal">
+          <div class="icon">♪</div>
+          <h3>Дуугаралт</h3>
+          <p>Line array, subwoofer, monitor, wireless mic, mixer setup.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">✦</div>
+          <h3>Гэрэлтүүлэг</h3>
+          <p>Moving head, beam, wash, laser, strobe, DMX control.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">▦</div>
+          <h3>LED дэлгэц</h3>
+          <p>Indoor/outdoor LED wall, visual content, media control.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon">▱</div>
+          <h3>Тайз</h3>
+          <p>Тайз platform, truss, rigging, монтаж, буулгалт.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="section-head reveal">
+        <p class="eyebrow">Хийсэн ажлууд</p>
+        <h2>Итгэл төрүүлэх ажлууд</h2>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card reveal">
+          <span>Concert</span>
+          <h3>Тайзны цогц шийдэл</h3>
+          <p>Тайз · Гэрэл · Дуу · LED</p>
+        </article>
+        <article class="project-card reveal">
+          <span>Festival</span>
+          <h3>Гадаа эвентийн угсралт</h3>
+          <p>Rigging · Тайз · Дуугаралт</p>
+        </article>
+        <article class="project-card reveal">
+          <span>Corporate</span>
+          <h3>Хурал, танилцуулга</h3>
+          <p>LED · Гэрэл · Микрофон</p>
+        </article>
+      </div>
+
+      <div class="project-list">
+        <div class="row reveal"><b>01</b><strong>Улаанбаатар рок фестиваль</strong><span>Full production</span><em>2024</em></div>
+        <div class="row reveal"><b>02</b><strong>Corporate conference</strong><span>Дуугаралт · LED · Light</span><em>2024</em></div>
+        <div class="row reveal"><b>03</b><strong>Fashion / show event</strong><span>Тайз · Light</span><em>2023</em></div>
+      </div>
+    </section>
+
+    <section id="equipment" class="section equipment">
+      <div class="section-head reveal">
+        <p class="eyebrow">Тоног төхөөрөмж</p>
+        <h2>Мэргэжлийн тоног төхөөрөмж</h2>
+      </div>
+
+      <div class="cards four compact">
+        <div class="card reveal"><span class="tag">Дуугаралт</span><h3>Line Array систем</h3><p>JBL · L-Acoustics</p></div>
+        <div class="card reveal"><span class="tag">Light</span><h3>Moving Head гэрэл</h3><p>Beam · Spot · Wash</p></div>
+        <div class="card reveal"><span class="tag">Тайз</span><h3>Truss систем</h3><p>Rigging · Structure</p></div>
+        <div class="card reveal"><span class="tag">LED</span><h3>LED дэлгэц</h3><p>Дэлгэц · Удирдлага</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="about-copy reveal">
+        <p class="eyebrow">Тухай</p>
+        <h2>NovaX Тайз</h2>
+        <p>NovaX Тайз нь 1996 оноос хойш тайз, гэрэл, дуугаралтын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээсийн үйлчилгээ үзүүлж байна.</p>
+        <p>Бид эвентийн техникийн бүх шийдлийг нэг дороос хангаж, найдвартай, чанартай гүйцэтгэл үзүүлдэг.</p>
+      </div>
+      <div class="numbers">
+        <div class="number reveal"><strong>200+</strong><span>Амжилттай ажил</span></div>
+        <div class="number reveal"><strong>30</strong><span>Жилийн туршлага</span></div>
+        <div class="number reveal"><strong>50+</strong><span>Тоног брэнд</span></div>
+        <div class="number reveal"><strong>24/7</strong><span>Дэмжлэг</span></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="contact-main reveal">
+        <p class="eyebrow">Холбоо барих</p>
+        <h2>Захиалга өгөх</h2>
+        <p>Арга хэмжээний мэдээллээ үлдээгээрэй. Бид 24 цагийн дотор холбогдоно.</p>
+        <button class="btn primary" type="button" data-quote-open>Үнийн санал авах</button>
+      </div>
+
+      <div class="contact-cards">
+        <a class="contact-card reveal" href="tel:+97699245574"><span>Утас</span><strong>+976 9924 5574</strong></a>
+        <a class="contact-card reveal" href="mailto:novaxstage@gmail.com"><span>Имэйл</span><strong>novaxstage@gmail.com</strong></a>
+        <div class="contact-card reveal"><span>Хаяг</span><strong>Улаанбаатар, Монгол</strong></div>
+      </div>
+
+      <div class="socials reveal">
+        <a href="https://www.facebook.com/people/NOVA-X-STAGE/100083360228173/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/novaxstage/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <p class="copy">© 2026 NovaX Тайз. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </section>
+  </main>
+
+  <div class="modal" id="quoteModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close" type="button" data-quote-close>×</button>
+      <h3>Үнийн санал авах</h3>
+      <p>Нэр, утас, имэйл болон арга хэмжээний мэдээллээ үлдээгээрэй.</p>
+      <form id="quoteForm" action="https://formspree.io/f/mgorqynz" method="POST">
+        <input name="name" placeholder="Таны нэр" required>
+        <input name="phone" placeholder="Утасны дугаар" required>
+        <input name="email" type="email" placeholder="Имэйл хаяг" required>
+        <textarea name="message" placeholder="Арга хэмжээний төрөл, огноо, хэрэгтэй тоног төхөөрөмж..." required></textarea>
+        <input type="hidden" name="_subject" value="NovaX Тайз - Үнийн санал авах хүсэлт">
+        <button class="btn primary" type="submit">Дуусгах</button>
+      </form>
+      <div class="success" id="quoteSuccess">
+        <div class="success-icon">✓</div>
+        <h3>Баярлалаа!</h3>
+        <p>Таны хүсэлт амжилттай илгээгдлээ.</p>
+        <button class="btn primary" type="button" data-quote-close>Хаах</button>
+      </div>
+    </div>
   </div>
-</section>
 
-<section id="contact">
-  <h2>Холбоо барих</h2>
-  <p>+976 9924 5574</p>
-  <p>novaxstage@gmail.com</p>
-  <p>Улаанбаатар, Монгол</p>
-</section>
-
+<script src="main.js"></script>
 </body>
 </html>
