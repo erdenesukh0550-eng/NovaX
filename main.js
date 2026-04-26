@@ -1,227 +1,114 @@
-/* ===========================
-   NovaX – main.js (FINAL FIX)
-   =========================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.getElementById("navbar");
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
+  const progress = document.getElementById("progress");
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Smooth scroll helper
-  function scrollToSection(id) {
+  function scrollToId(id) {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  navToggle?.addEventListener("click", () => navLinks?.classList.toggle("open"));
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", e => {
+      const id = link.getAttribute("href").slice(1);
+      if (id) {
+        e.preventDefault();
+        scrollToId(id);
+        navLinks?.classList.remove("open");
+      }
+    });
+  });
+
+  let lastY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    navbar?.classList.toggle("scrolled", y > 40);
+    if (navbar) {
+      if (y <= 10 || y < lastY) navbar.style.transform = "translateY(0)";
+      else if (y > 120) navbar.style.transform = "translateY(-110%)";
     }
+    lastY = y;
+
+    if (progress) {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${Math.max(0, Math.min(100, (y / h) * 100))}%`;
+    }
+  }, { passive: true });
+
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+  const contact = document.getElementById("contact");
+  if (contact) {
+    const contactObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        contact.classList.toggle("light-on", entry.isIntersecting);
+      });
+    }, { threshold: 0.3 });
+    contactObserver.observe(contact);
   }
 
-  // Navbar scroll effect
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-    });
-  }
+  const modal = document.getElementById("quoteModal");
+  const quoteForm = document.getElementById("quoteForm");
+  const quoteSuccess = document.getElementById("quoteSuccess");
 
-  // Auto hide navbar on scroll down, show on scroll up
-  let lastScrollY = window.scrollY;
-  if (navbar) {
-    window.addEventListener('scroll', () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY <= 10) {
-        navbar.style.transform = 'translateY(0)';
-      } else if (currentScrollY > lastScrollY && currentScrollY > 120) {
-        navbar.style.transform = 'translateY(-110%)';
-      } else {
-        navbar.style.transform = 'translateY(0)';
-      }
-
-      lastScrollY = currentScrollY;
-    }, { passive: true });
-  }
-
-  // Mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-  }
-
-  // Smooth scroll for navbar links + close mobile nav
-  document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (event) => {
-      const id = link.getAttribute('href').replace('#', '');
-      if (id) {
-        event.preventDefault();
-        scrollToSection(id);
-      }
-      navLinks?.classList.remove('open');
-    });
-  });
-
-  // Logo click goes to home
-  document.querySelectorAll('.logo[href^="#"]').forEach(link => {
-    link.addEventListener('click', (event) => {
-      const id = link.getAttribute('href').replace('#', '');
-      if (id) {
-        event.preventDefault();
-        scrollToSection(id);
-      }
-      navLinks?.classList.remove('open');
-    });
-  });
-
-  // Buttons with data-scroll
-  document.querySelectorAll('[data-scroll]').forEach(button => {
-    button.addEventListener('click', () => {
-      scrollToSection(button.dataset.scroll);
-    });
-  });
-
-  // Quote modal
-  const quoteModal = document.getElementById('quoteModal');
-  const quoteForm = document.getElementById('quoteForm');
-  const quoteSuccess = document.getElementById('quoteSuccess');
-  const openQuoteButtons = document.querySelectorAll('[data-quote-open]');
-  const closeQuoteButtons = document.querySelectorAll('[data-quote-close]');
-
-  function openQuoteModal() {
-    if (!quoteModal) return;
-    quoteModal.classList.add('open');
-    quoteModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-
+  function openModal() {
+    if (!modal) return;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
     if (quoteForm && quoteSuccess) {
       quoteForm.reset();
-      quoteForm.style.display = 'grid';
-      quoteSuccess.classList.remove('show');
+      quoteForm.style.display = "grid";
+      quoteSuccess.classList.remove("show");
     }
   }
 
-  function closeQuoteModal() {
-    if (!quoteModal) return;
-    quoteModal.classList.remove('open');
-    quoteModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
   }
 
-  openQuoteButtons.forEach(button => {
-    button.addEventListener('click', openQuoteModal);
-  });
+  document.querySelectorAll("[data-quote-open]").forEach(btn => btn.addEventListener("click", openModal));
+  document.querySelectorAll("[data-quote-close]").forEach(btn => btn.addEventListener("click", closeModal));
+  modal?.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 
-  closeQuoteButtons.forEach(button => {
-    button.addEventListener('click', closeQuoteModal);
-  });
-
-  quoteModal?.addEventListener('click', (event) => {
-    if (event.target === quoteModal) {
-      closeQuoteModal();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeQuoteModal();
-    }
-  });
-
-  // Submit Formspree without leaving the website
-  quoteForm?.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const submitButton = quoteForm.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    submitButton.textContent = 'Илгээж байна...';
-    submitButton.disabled = true;
+  quoteForm?.addEventListener("submit", async e => {
+    e.preventDefault();
+    const submit = quoteForm.querySelector("button[type='submit']");
+    const old = submit.textContent;
+    submit.textContent = "Илгээж байна...";
+    submit.disabled = true;
 
     try {
-      const response = await fetch(quoteForm.action, {
-        method: 'POST',
+      const res = await fetch(quoteForm.action, {
+        method: "POST",
         body: new FormData(quoteForm),
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { "Accept": "application/json" }
       });
 
-      if (response.ok) {
+      if (res.ok) {
         quoteForm.reset();
-        closeQuoteModal();
-        scrollToSection('home');
+        quoteForm.style.display = "none";
+        quoteSuccess?.classList.add("show");
       } else {
-        alert('Илгээхэд алдаа гарлаа. Дахин оролдоно уу.');
+        alert("Илгээхэд алдаа гарлаа. Дахин оролдоно уу.");
       }
-    } catch (error) {
-      alert('Интернет холболт эсвэл серверийн алдаа гарлаа.');
+    } catch {
+      alert("Интернет холболт эсвэл серверийн алдаа гарлаа.");
     } finally {
-      submitButton.textContent = originalText;
-      submitButton.disabled = false;
+      submit.textContent = old;
+      submit.disabled = false;
     }
   });
-
-  // Service tab switcher
-  function showService(type, el) {
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.classList.remove('active');
-    });
-
-    document.querySelectorAll('.service-detail').forEach(detail => {
-      detail.classList.remove('visible');
-    });
-
-    el.classList.add('active');
-
-    const detail = document.getElementById('detail-' + type);
-    if (detail) {
-      detail.classList.add('visible');
-    }
-  }
-
-  document.querySelectorAll('.service-card[data-service]').forEach(card => {
-    card.addEventListener('click', () => {
-      showService(card.dataset.service, card);
-    });
-  });
-
-  // Scroll reveal animation
-  const revealElements = document.querySelectorAll(
-    '.service-card, .eq-card, .project-row, .about-block, .contact-opt'
-  );
-
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    revealElements.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      revealObserver.observe(el);
-    });
-  }
-  // N.O.V.A light-on effect for contact section
-  const contactSection = document.getElementById('contact');
-  if (contactSection && 'IntersectionObserver' in window) {
-    const contactLightObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          contactSection.classList.add('light-on');
-        } else {
-          contactSection.classList.remove('light-on');
-        }
-      });
-    }, { threshold: 0.35 });
-
-    contactLightObserver.observe(contactSection);
-  }
-
 });

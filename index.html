@@ -1,1004 +1,179 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NovaX – Тайз, гэрэл, дуугарлын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээс">
-  <title>NovaX – Stage · Light · Sound</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NovaX Stage – Тайз, гэрэл, дуугаралт, LED дэлгэц, event production үйлчилгээ." />
+  <title>NovaX Stage – Stage · Light · Sound</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* NOVA FIX: logo 2x томруулалт */
-    nav .logo img,
-    footer .logo img {
-      height: 64px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    @media (max-width: 768px) {
-      nav .logo img,
-      footer .logo img {
-        height: 48px;
-      }
-    }
-
-    /* NOVA FIX: Үнийн санал popup form */
-    .quote-modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(10px);
-      z-index: 9999;
-    }
-
-    .quote-modal.open {
-      display: flex;
-    }
-
-    .quote-modal-card {
-      position: relative;
-      width: min(100%, 480px);
-      padding: 32px;
-      border: 1px solid rgba(47, 111, 255, 0.45);
-      border-radius: 22px;
-      background:
-        radial-gradient(circle at top, rgba(47, 111, 255, 0.22), transparent 42%),
-        #07101f;
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55), 0 0 35px rgba(47, 111, 255, 0.18);
-      color: #fff;
-    }
-
-    .quote-close {
-      position: absolute;
-      top: 16px;
-      right: 18px;
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      color: #fff;
-      font-size: 24px;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .quote-modal-card h3 {
-      margin: 0 0 8px;
-      font-size: 32px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .quote-modal-card p {
-      margin: 0 0 22px;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.6;
-    }
-
-    .quote-form {
-      display: grid;
-      gap: 14px;
-    }
-
-    .quote-form input,
-    .quote-form textarea {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 14px 16px;
-      border: 1px solid rgba(47, 111, 255, 0.35);
-      border-radius: 12px;
-      outline: none;
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font: inherit;
-    }
-
-    .quote-form input::placeholder,
-    .quote-form textarea::placeholder {
-      color: rgba(255,255,255,0.45);
-    }
-
-    .quote-form textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .quote-submit {
-      margin-top: 4px;
-      padding: 15px 18px;
-      border: 0;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #2f6fff, #00b7ff);
-      color: #fff;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 0 24px rgba(47, 111, 255, 0.35);
-    }
-
-    .quote-submit:hover {
-      transform: translateY(-1px);
-    }
-
-    .quote-success {
-      display: none;
-      text-align: center;
-      padding: 14px 0 4px;
-    }
-
-    .quote-success.show {
-      display: block;
-    }
-
-    .quote-success-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 18px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2f6fff, #00b7ff);
-      box-shadow: 0 0 28px rgba(47, 111, 255, 0.45);
-      font-size: 34px;
-      font-weight: 900;
-    }
-
-    .quote-success h3 {
-      margin: 0 0 10px;
-      font-size: 36px;
-    }
-
-    .quote-success p {
-      margin-bottom: 22px;
-    }
-  
-    /* NOVA FIX: force bigger clickable logo */
-    nav .logo,
-    footer .logo {
-      display: inline-flex !important;
-      align-items: center !important;
-      text-decoration: none !important;
-    }
-
-    nav .logo img {
-      height: 76px !important;
-      width: auto !important;
-      max-height: none !important;
-      object-fit: contain !important;
-      display: block !important;
-    }
-
-    footer .logo img {
-      height: 64px !important;
-      width: auto !important;
-      max-height: none !important;
-      object-fit: contain !important;
-      display: block !important;
-    }
-
-    nav#navbar {
-      min-height: 88px !important;
-    }
-
-    @media (max-width: 768px) {
-      nav .logo img {
-        height: 54px !important;
-      }
-
-      footer .logo img {
-        height: 48px !important;
-      }
-
-      nav#navbar {
-        min-height: 72px !important;
-      }
-    }
-
-  
-    /* NOVA FIX: About section premium background upgrade */
-    #about.about-section {
-      position: relative !important;
-      overflow: hidden !important;
-      min-height: 760px !important;
-      padding: 130px 6vw !important;
-      display: grid !important;
-      grid-template-columns: 1.05fr 0.95fr !important;
-      gap: 80px !important;
-      align-items: center !important;
-      background:
-        linear-gradient(90deg, rgba(3, 8, 18, 0.94) 0%, rgba(3, 8, 18, 0.82) 45%, rgba(3, 8, 18, 0.62) 100%),
-        url("about-bg.png") center/cover no-repeat !important;
-      border-top: 1px solid rgba(47, 111, 255, 0.18);
-      border-bottom: 1px solid rgba(47, 111, 255, 0.18);
-    }
-
-    #about.about-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 18% 30%, rgba(47, 111, 255, 0.20), transparent 30%),
-        radial-gradient(circle at 82% 52%, rgba(0, 183, 255, 0.12), transparent 32%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    #about.about-section::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.16);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    #about.about-section > * {
-      position: relative;
-      z-index: 2;
-    }
-
-    #about .about-text {
-      max-width: 760px !important;
-    }
-
-    #about .big-title {
-      font-size: clamp(64px, 7vw, 112px) !important;
-      line-height: 0.92 !important;
-      letter-spacing: -0.035em !important;
-      margin-bottom: 48px !important;
-      text-shadow: 0 0 34px rgba(47, 111, 255, 0.18);
-    }
-
-    #about .about-text p {
-      max-width: 680px !important;
-      font-size: 20px !important;
-      line-height: 1.9 !important;
-      color: rgba(238, 245, 255, 0.86) !important;
-      margin-bottom: 22px !important;
-    }
-
-    #about .about-grid.vertical {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 18px !important;
-      width: min(100%, 520px) !important;
-      margin-left: auto !important;
-    }
-
-    #about .about-block {
-      min-height: 118px !important;
-      padding: 26px 34px !important;
-      border-radius: 18px !important;
-      background: linear-gradient(135deg, rgba(7, 18, 38, 0.78), rgba(2, 8, 18, 0.68)) !important;
-      border: 1px solid rgba(47, 111, 255, 0.32) !important;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.26), inset 0 0 34px rgba(47, 111, 255, 0.045) !important;
-      backdrop-filter: blur(10px);
-    }
-
-    #about .ab-num {
-      font-size: clamp(44px, 4vw, 64px) !important;
-      line-height: 1 !important;
-      font-weight: 900 !important;
-      color: #83aaff !important;
-      text-shadow: 0 0 22px rgba(47, 111, 255, 0.28);
-    }
-
-    #about .ab-label {
-      margin-top: 12px !important;
-      font-size: 14px !important;
-      letter-spacing: 0.16em !important;
-      text-transform: uppercase !important;
-      color: rgba(238, 245, 255, 0.72) !important;
-    }
-
-    @media (max-width: 920px) {
-      #about.about-section {
-        grid-template-columns: 1fr !important;
-        gap: 42px !important;
-        padding: 92px 24px !important;
-        min-height: auto !important;
-      }
-
-      #about .about-grid.vertical {
-        width: 100% !important;
-        margin-left: 0 !important;
-      }
-
-      #about .about-text p {
-        font-size: 17px !important;
-        line-height: 1.75 !important;
-      }
-    }
-
-  </style>
-
-
-  <style id="nova-contact-cover-light-fx">
-    /* N.O.V.A final contact: cover background + scroll light effect */
-
-    footer { display: none !important; }
-
-    nav#navbar {
-      min-height: 82px !important;
-      transition: transform 0.32s ease, background 0.32s ease, border-color 0.32s ease !important;
-      will-change: transform;
-    }
-
-    nav .logo {
-      display: inline-flex !important;
-      align-items: center !important;
-      text-decoration: none !important;
-    }
-
-    nav .logo img {
-      height: 68px !important;
-      width: auto !important;
-      max-height: none !important;
-      object-fit: contain !important;
-      display: block !important;
-    }
-
-    #contact.contact-section {
-      position: relative !important;
-      min-height: 100vh !important;
-      overflow: hidden !important;
-      padding: 96px 5vw 34px !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      text-align: center !important;
-      background:
-        linear-gradient(180deg, rgba(1,5,12,.88) 0%, rgba(1,5,12,.52) 30%, rgba(1,5,12,.18) 52%, rgba(1,5,12,.54) 82%, rgba(1,5,12,.84) 100%),
-        url("contact-bg.png") center 55% / cover no-repeat !important;
-      background-color: #01050d !important;
-      border-top: 1px solid rgba(47,111,255,.18);
-      border-bottom: 0 !important;
-      isolation: isolate;
-    }
-
-    #contact.contact-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.62), transparent 22%, transparent 78%, rgba(0,0,0,.62)),
-        radial-gradient(circle at 50% 52%, transparent 0%, transparent 37%, rgba(0,0,0,.16) 62%, rgba(0,0,0,.52) 100%);
-    }
-
-    /* Scroll-д орж ирэхэд доороос гэрэл асах эффект */
-    #contact.contact-section::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -18%;
-      width: 72vw;
-      max-width: 980px;
-      height: 46vh;
-      transform: translateX(-50%) scale(.78);
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0;
-      background:
-        radial-gradient(ellipse at center, rgba(0, 183, 255, .48) 0%, rgba(47, 111, 255, .28) 28%, rgba(47, 111, 255, .10) 48%, transparent 72%),
-        linear-gradient(0deg, rgba(0, 183, 255, .22), transparent 68%);
-      filter: blur(18px);
-      transition: opacity 1.25s ease, transform 1.25s ease;
-      mix-blend-mode: screen;
-    }
-
-    #contact.light-on::after {
-      opacity: 1;
-      transform: translateX(-50%) scale(1);
-      animation: novaLightPulse 3.2s ease-in-out infinite;
-    }
-
-    @keyframes novaLightPulse {
-      0%, 100% {
-        opacity: .72;
-        filter: blur(18px);
-      }
-      50% {
-        opacity: 1;
-        filter: blur(24px);
-      }
-    }
-
-    #contact.contact-section > * {
-      position: relative !important;
-      z-index: 2 !important;
-    }
-
-    #contact .contact-content {
-      width: min(100%, 760px) !important;
-      margin: 0 auto !important;
-      padding: 0 14px !important;
-      transform: translateY(-38px) !important;
-    }
-
-    #contact .contact-tag {
-      color: #4c93ff !important;
-      font-size: 15px !important;
-      letter-spacing: .42em !important;
-      font-weight: 900 !important;
-      margin: 0 0 12px !important;
-      text-shadow: 0 0 18px rgba(47,111,255,.58);
-    }
-
-    #contact .contact-title {
-      font-size: clamp(44px, 4.2vw, 72px) !important;
-      line-height: .94 !important;
-      letter-spacing: -.035em !important;
-      margin: 0 0 22px !important;
-      color: #f2f7ff !important;
-      text-shadow: 0 8px 34px rgba(0,0,0,.65), 0 0 30px rgba(47,111,255,.18);
-    }
-
-    #contact .contact-sub {
-      color: rgba(238,245,255,.92) !important;
-      font-size: 17px !important;
-      line-height: 1.62 !important;
-      margin: 0 auto 26px !important;
-      text-shadow: 0 2px 16px rgba(0,0,0,.86);
-    }
-
-    #contact .center-btn {
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      min-width: 300px !important;
-      padding: 16px 32px !important;
-      font-size: 15px !important;
-      font-weight: 900 !important;
-      letter-spacing: .10em !important;
-      text-transform: uppercase !important;
-      margin: 0 !important;
-      box-shadow: 0 16px 42px rgba(47,111,255,.38), 0 0 30px rgba(47,111,255,.22) !important;
-      transition: transform .25s ease, box-shadow .25s ease !important;
-    }
-
-    #contact .center-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 22px 54px rgba(47,111,255,.48), 0 0 42px rgba(47,111,255,.32) !important;
-    }
-
-    #contact .contact-info {
-      width: min(100%, 1040px) !important;
-      display: grid !important;
-      grid-template-columns: repeat(3, minmax(250px, 1fr)) !important;
-      gap: 18px !important;
-      margin: auto auto 26px !important;
-      padding-top: 36px !important;
-    }
-
-    #contact .info-card {
-      min-height: 108px !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 18px !important;
-      text-align: left !important;
-      padding: 22px 26px !important;
-      border-radius: 16px !important;
-      background: rgba(4, 13, 28, .82) !important;
-      border: 1px solid rgba(47,111,255,.48) !important;
-      box-shadow: 0 18px 54px rgba(0,0,0,.38), inset 0 0 30px rgba(47,111,255,.055) !important;
-      backdrop-filter: blur(12px);
-      text-decoration: none !important;
-      color: #fff !important;
-      min-width: 0 !important;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease !important;
-    }
-
-    #contact .info-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(87,157,255,.82) !important;
-      box-shadow: 0 24px 66px rgba(0,0,0,.44), 0 0 30px rgba(47,111,255,.24) !important;
-    }
-
-    #contact .info-icon {
-      width: 54px !important;
-      height: 54px !important;
-      min-width: 54px !important;
-      max-width: 54px !important;
-      flex: 0 0 54px !important;
-      display: grid !important;
-      place-items: center !important;
-      border-radius: 999px !important;
-      border: 1px solid rgba(47,111,255,.76) !important;
-      background: rgba(47,111,255,.13) !important;
-      box-shadow: inset 0 0 18px rgba(47,111,255,.18), 0 0 22px rgba(47,111,255,.10);
-      overflow: hidden !important;
-    }
-
-    #contact .info-icon svg {
-      width: 25px !important;
-      height: 25px !important;
-      min-width: 25px !important;
-      max-width: 25px !important;
-      display: block !important;
-      fill: none !important;
-      stroke: #2f7dff !important;
-      stroke-width: 2.1 !important;
-      stroke-linecap: round !important;
-      stroke-linejoin: round !important;
-    }
-
-    #contact .info-icon svg *,
-    #contact .info-icon path,
-    #contact .info-icon circle {
-      fill: none !important;
-      stroke: #2f7dff !important;
-      stroke-width: 2.1 !important;
-      stroke-linecap: round !important;
-      stroke-linejoin: round !important;
-    }
-
-    #contact .info-text {
-      min-width: 0 !important;
-      flex: 1 1 auto !important;
-    }
-
-    #contact .info-card span {
-      display: block !important;
-      color: rgba(238,245,255,.66) !important;
-      font-size: 12px !important;
-      letter-spacing: .24em !important;
-      font-weight: 900 !important;
-      margin-bottom: 8px !important;
-    }
-
-    #contact .info-card strong {
-      display: block !important;
-      color: #fff !important;
-      font-size: 18px !important;
-      line-height: 1.32 !important;
-      font-weight: 800 !important;
-      word-break: normal !important;
-      overflow-wrap: normal !important;
-      white-space: normal !important;
-    }
-
-    #contact .email-text {
-      font-size: 16px !important;
-      white-space: nowrap !important;
-      word-break: keep-all !important;
-      overflow-wrap: normal !important;
-    }
-
-    #contact .contact-copy {
-      color: rgba(238,245,255,.86) !important;
-      font-size: 14px !important;
-      font-weight: 800 !important;
-      letter-spacing: .04em !important;
-      text-shadow: 0 2px 16px rgba(0,0,0,.75), 0 0 18px rgba(47,111,255,.28);
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    @media (max-width: 1020px) {
-      #contact .contact-info {
-        grid-template-columns: 1fr !important;
-        width: min(100%, 520px) !important;
-      }
-    }
-
-    @media (max-width: 680px) {
-      nav#navbar { min-height: 72px !important; }
-      nav .logo img { height: 56px !important; }
-
-      #contact.contact-section {
-        padding: 86px 20px 30px !important;
-        background-size: cover !important;
-        background-position: center 55% !important;
-      }
-
-      #contact .contact-content {
-        transform: translateY(-24px) !important;
-      }
-
-      #contact .contact-title { font-size: 42px !important; }
-      #contact .contact-sub { font-size: 16px !important; }
-      #contact .center-btn { min-width: 0 !important; width: 100% !important; max-width: 360px !important; }
-      #contact .email-text { white-space: normal !important; }
-    }
-  </style>
-
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="progress" id="progress"></div>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <a class="logo" href="#home" aria-label="NovaX home"><img src="novax-logo.png" alt="NOVAX STAGE logo"></a>
-    <ul class="nav-links">
+  <nav id="navbar" class="navbar">
+    <a class="brand" href="#home" aria-label="NovaX Stage home">
+      <img src="novax-logo.png" alt="NovaX Stage logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <span class="brand-text">NovaX</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
       <li><a href="#services">Үйлчилгээ</a></li>
       <li><a href="#equipment">Тоног</a></li>
       <li><a href="#projects">Ажлууд</a></li>
       <li><a href="#about">Тухай</a></li>
       <li><a href="#contact">Холбоо</a></li>
     </ul>
-    
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-tag">Stage · Light · Sound</div>
-      <h1 class="hero-title">ТАЙЗ. ГЭРЭЛ. <em>ДУУГАРАЛТ.</em></h1>
-      <p class="hero-sub">
-        Арга хэмжээний тоног төхөөрөмж — худалдаа, түрээс, монтаж.<br>
-        Мэргэжлийн техникийн шийдэл.
-      </p>
-      <div class="hero-btns">
-        <button class="btn-primary" data-scroll="services">Үйлчилгээ харах</button>
-        <button class="btn-ghost" data-scroll="equipment">Тоног үзэх</button>
-      </div>
-    </div>
-    <div class="hero-line"></div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">200+</div>
-        <div class="stat-label">Амжилттай ажил</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Жилийн туршлага</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">50+</div>
-        <div class="stat-label">Брэндийн тоног</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-tag">Үйлчилгээ</div>
-    <h2 class="section-title">БИДНИЙ<br>ЧИГЛЭЛҮҮД</h2>
-
-    <div class="services-grid">
-      <div class="service-card active" data-service="stage">
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="32" width="40" height="6" stroke="#c8ff00" stroke-width="1.5"/>
-            <rect x="12" y="14" width="4" height="18" stroke="#888" stroke-width="1.5"/>
-            <rect x="32" y="14" width="4" height="18" stroke="#888" stroke-width="1.5"/>
-            <line x1="16" y1="14" x2="32" y2="14" stroke="#888" stroke-width="1.5"/>
-            <line x1="4" y1="32" x2="12" y2="14" stroke="#555" stroke-width="1"/>
-            <line x1="44" y1="32" x2="36" y2="14" stroke="#555" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="service-name">Тайзны систем</div>
-        <div class="service-desc">Тайз, трасс, нуман хийц болон бүх төрлийн тайзны угсралт</div>
-      </div>
-
-      <div class="service-card" data-service="light">
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="20" r="8" stroke="#c8ff00" stroke-width="1.5"/>
-            <line x1="24" y1="4" x2="24" y2="10" stroke="#888" stroke-width="1.5"/>
-            <line x1="24" y1="30" x2="24" y2="36" stroke="#888" stroke-width="1.5"/>
-            <line x1="8" y1="20" x2="14" y2="20" stroke="#888" stroke-width="1.5"/>
-            <line x1="34" y1="20" x2="40" y2="20" stroke="#888" stroke-width="1.5"/>
-            <line x1="13" y1="9" x2="17.2" y2="13.2" stroke="#888" stroke-width="1.5"/>
-            <line x1="30.8" y1="26.8" x2="35" y2="31" stroke="#888" stroke-width="1.5"/>
-            <line x1="35" y1="9" x2="30.8" y2="13.2" stroke="#888" stroke-width="1.5"/>
-            <line x1="17.2" y1="26.8" x2="13" y2="31" stroke="#888" stroke-width="1.5"/>
-            <rect x="20" y="36" width="8" height="8" stroke="#555" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="service-name">Гэрэлтүүлэг</div>
-        <div class="service-desc">LED wash, moving head, laser, strobe болон мэргэжлийн арга хэмжээний гэрэл</div>
-      </div>
-
-      <div class="service-card" data-service="sound">
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="12" width="14" height="24" rx="2" stroke="#c8ff00" stroke-width="1.5"/>
-            <circle cx="13" cy="30" r="4" stroke="#888" stroke-width="1"/>
-            <circle cx="13" cy="18" r="2" stroke="#888" stroke-width="1"/>
-            <path d="M26 10 C38 16 38 32 26 38" stroke="#888" stroke-width="1.5" fill="none"/>
-            <path d="M28 16 C36 20 36 28 28 32" stroke="#555" stroke-width="1" fill="none"/>
-            <path d="M30 20 C34 22 34 26 30 28" stroke="#888" stroke-width="1" fill="none"/>
-          </svg>
-        </div>
-        <div class="service-name">Дуу Хөгжим</div>
-        <div class="service-desc">Line array, subwoofer, mixer, monitor, wireless mic системийн бүрэн шийдэл</div>
+  <header id="home" class="hero">
+    <div class="hero-orb"></div>
+    <div class="hero-content reveal">
+      <p class="eyebrow">Stage · Light · Sound · LED</p>
+      <h1>WE CREATE<br><em>EXPERIENCES</em></h1>
+      <p class="hero-sub">NovaX Stage нь тайз, гэрэл, дуугаралт, LED дэлгэцийн мэргэжлийн шийдлийг нэг дороос санал болгодог.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-quote-open type="button">Үнийн санал авах</button>
+        <a class="btn btn-ghost" href="#services">Үйлчилгээ үзэх</a>
       </div>
     </div>
 
-    <!-- Service Details -->
-    <div class="service-detail visible" id="detail-stage">
-      <div class="detail-text-col">
-        <div class="detail-title">ТАЙЗНЫ СИСТЕМ</div>
-        <p class="detail-desc">Концерт, фестиваль, корпоратив, шоу арга хэмжээнд зориулсан бүх хэмжээний тайз, трасс, хийцийн цогц шийдэл. Монтаж, демонтажийг мэргэжлийн багаар гүйцэтгэнэ.</p>
-        <ul class="detail-list">
-          <li>Гагнуурын тусгай тайз — 4×8м, 6×10м, 8×12м</li>
-          <li>Алюмин трасс систем — Trusst, Global Truss</li>
-          <li>Автомат хийц — 1000кг хүртэлх ачаалал</li>
-          <li>Тайзны буртмал, хаалт, декор</li>
-          <li>Угсралт, буулгалт, тээвэр хамтад</li>
-        </ul>
-      </div>
-      <div class="detail-visual">
-        <div class="dv-block accent">Тайз</div>
-        <div class="dv-block">Трасс</div>
-        <div class="dv-block">Хийц</div>
-        <div class="dv-block accent">Монтаж</div>
-      </div>
+    <div class="hero-stats reveal">
+      <div><strong>200+</strong><span>Амжилттай ажил</span></div>
+      <div><strong>30</strong><span>Жилийн туршлага</span></div>
+      <div><strong>24/7</strong><span>Техник дэмжлэг</span></div>
     </div>
+  </header>
 
-    <div class="service-detail" id="detail-light">
-      <div class="detail-text-col">
-        <div class="detail-title">ГЭРЭЛТҮҮЛЭГ</div>
-        <p class="detail-desc">Тоглолт, хурал, үзэсгэлэн, клуб, арга хэмжээнд зориулсан мэргэжлийн гэрлийн систем. Программчлал, операторын үйлчилгээ хамтад.</p>
-        <ul class="detail-list">
-          <li>Moving head — Beam, Spot, Wash</li>
-          <li>LED пар, стробоскоп, эффект гэрэл</li>
-          <li>Лазер — RGB 3W, 5W, 10W</li>
-          <li>DMX контроллер, MA Lighting, Avolites</li>
-          <li>Гэрлийн дизайн, программчлал</li>
-        </ul>
+  <main>
+    <section id="services" class="section services-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Үйлчилгээ</p>
+        <h2>Бүх техникийн шийдэл<br>нэг дор</h2>
       </div>
-      <div class="detail-visual">
-        <div class="dv-block accent">LED</div>
-        <div class="dv-block">Лазер</div>
-        <div class="dv-block">Moving</div>
-        <div class="dv-block accent">DMX</div>
-      </div>
-    </div>
 
-    <div class="service-detail" id="detail-sound">
-      <div class="detail-text-col">
-        <div class="detail-title">ДУУ Хөгжим</div>
-        <p class="detail-desc">JBL, L-Acoustics, Yamaha, Shure брэндийн тоног. 100-аас 10,000+ хүний суудалтай арга хэмжээнд зориулсан дуугаралтын систем.</p>
-        <ul class="detail-list">
-          <li>Line array — JBL VTX, L-Acoustics K2</li>
-          <li>Subwoofer — 18", 21" нэгжүүд</li>
-          <li>Digital mixer — Yamaha CL5, Allen &amp; Heath</li>
-          <li>Wireless mic — Shure Axient, UR4D</li>
-          <li>Monitor, IEM систем</li>
-        </ul>
+      <div class="service-grid">
+        <article class="service-card reveal">
+          <div class="icon">♪</div>
+          <h3>Дуугаралт</h3>
+          <p>Line array, subwoofer, mixer, monitor, wireless mic систем.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="icon">✦</div>
+          <h3>Гэрэлтүүлэг</h3>
+          <p>Moving head, beam, wash, laser, strobe, DMX control.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="icon">▦</div>
+          <h3>LED дэлгэц</h3>
+          <p>Stage LED wall, visual content, screen setup, media control.</p>
+        </article>
+        <article class="service-card reveal">
+          <div class="icon">▱</div>
+          <h3>Тайз угсралт</h3>
+          <p>Тайз, truss, rigging, монтаж, буулгалт, тээвэр.</p>
+        </article>
       </div>
-      <div class="detail-visual">
-        <div class="dv-block accent">Array</div>
-        <div class="dv-block">Sub</div>
-        <div class="dv-block">Mixer</div>
-        <div class="dv-block accent">Mic</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- EQUIPMENT -->
-  <section id="equipment" class="equipment-section">
-    <div class="section-tag">Тоног төхөөрөмж</div>
-    <h2 class="section-title">КАТАЛОГ</h2>
-    <div class="eq-grid">
-      <div class="eq-card">
-        <div class="eq-badge">Дуу</div>
-        <div class="eq-name">JBL VTX A12</div>
-        <div class="eq-model">Line Array System</div>
-        <div class="eq-type">Түрээс · Худалдаа</div>
+    <section id="equipment" class="section equipment-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Тоног төхөөрөмж</p>
+        <h2>Professional equipment</h2>
       </div>
-      <div class="eq-card">
-        <div class="eq-badge">Гэрэл</div>
-        <div class="eq-name">Robe BMFL</div>
-        <div class="eq-model">Moving Head Spot</div>
-        <div class="eq-type">Түрээс</div>
-      </div>
-      <div class="eq-card">
-        <div class="eq-badge">Тайз</div>
-        <div class="eq-name">Global Truss F34</div>
-        <div class="eq-model">Aluminum Truss System</div>
-        <div class="eq-type">Түрээс · Худалдаа</div>
-      </div>
-      <div class="eq-card">
-        <div class="eq-badge">Дуу</div>
-        <div class="eq-name">Yamaha CL5</div>
-        <div class="eq-model">Digital Console 96ch</div>
-        <div class="eq-type">Түрээс</div>
-      </div>
-      <div class="eq-card">
-        <div class="eq-badge">Гэрэл</div>
-        <div class="eq-name">Ayrton MagicBlade</div>
-        <div class="eq-model">LED Beam Bar</div>
-        <div class="eq-type">Түрээс</div>
-      </div>
-      <div class="eq-card">
-        <div class="eq-badge">Дуу</div>
-        <div class="eq-name">Shure Axient AD4Q</div>
-        <div class="eq-model">Wireless Receiver 4ch</div>
-        <div class="eq-type">Түрээс · Худалдаа</div>
-      </div>
-      <div class="eq-card">
-        <div class="eq-badge">Гэрэл</div>
-        <div class="eq-name">GLP impression X4</div>
-        <div class="eq-model">LED Moving Head Wash</div>
-        <div class="eq-type">Түрээс</div>
-      </div>
-      <div class="eq-card">
-        <div class="eq-badge">Тайз</div>
-        <div class="eq-name">Prolyte H30V</div>
-        <div class="eq-model">Heavy Duty Truss</div>
-        <div class="eq-type">Түрээс · Худалдаа</div>
-      </div>
-    </div>
-  </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="projects-section">
-    <div class="section-tag">Хийсэн ажлууд</div>
-    <h2 class="section-title">ХИЙСЭН АЖЛУУД</h2>
-    <div class="projects-list">
-      <div class="project-row">
-        <div class="proj-num">01</div>
-        <div class="proj-name">УЛААНБААТАР РОК ФЕСТИВАЛЬ</div>
-        <div class="proj-meta">Тайз · Гэрэл · Дуу</div>
-        <div class="proj-year">2024</div>
+      <div class="equipment-grid">
+        <div class="equipment-card reveal"><span>Sound</span><h3>Line Array System</h3><p>JBL · L-Acoustics · Yamaha</p></div>
+        <div class="equipment-card reveal"><span>Light</span><h3>Moving Head / Beam</h3><p>Robe · Ayrton · GLP</p></div>
+        <div class="equipment-card reveal"><span>Stage</span><h3>Truss & Rigging</h3><p>Global Truss · Prolyte</p></div>
+        <div class="equipment-card reveal"><span>LED</span><h3>LED Screen</h3><p>Indoor · Outdoor · Control</p></div>
       </div>
-      <div class="project-row">
-        <div class="proj-num">02</div>
-        <div class="proj-name">МОНГОЛ ШУУДАН КОРПОРАТ</div>
-        <div class="proj-meta">Гэрэл · Дуу</div>
-        <div class="proj-year">2024</div>
-      </div>
-      <div class="project-row">
-        <div class="proj-num">03</div>
-        <div class="proj-name">НИЙСЛЭЛИЙН НААДАМ 2024</div>
-        <div class="proj-meta">Тайз · Гэрэл · Дуу</div>
-        <div class="proj-year">2024</div>
-      </div>
-      <div class="project-row">
-        <div class="proj-num">04</div>
-        <div class="proj-name">ЭРДЭНЭС ТАВАНТОЛГОЙ ХУРАЛ</div>
-        <div class="proj-meta">Дуу · Гэрэл</div>
-        <div class="proj-year">2023</div>
-      </div>
-      <div class="project-row">
-        <div class="proj-num">05</div>
-        <div class="proj-name">SKY RESORT OPENING</div>
-        <div class="proj-meta">Тайз · Гэрэл · Дуу</div>
-        <div class="proj-year">2023</div>
-      </div>
-      <div class="project-row">
-        <div class="proj-num">06</div>
-        <div class="proj-name">MONGOLIAN FASHION WEEK</div>
-        <div class="proj-meta">Тайз · Гэрэл</div>
-        <div class="proj-year">2023</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="about-section">
-    <div class="about-text">
-      <div class="section-tag">Тухай</div>
-      <h2 class="section-title big-title">БИДНИЙ<br>ТУХАЙ</h2>
-      <p>NovaX Stage нь 1996 оноос хойш тайз, гэрэл, дуугаралтын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээсийн үйлчилгээ үзүүлж байна.</p>
-      <p>Бид эвентийн техникийн бүх шийдлийг нэг дороос хангаж, найдвартай, чанартай гүйцэтгэл үзүүлдэг.</p>
-      <p>Концерт, хурал, фестиваль, шоу арга хэмжээнд мэргэжлийн түвшний шийдэл.</p>
-    </div>
-    <div class="about-grid vertical">
-      <div class="about-block">
-        <div class="ab-num">200+</div>
-        <div class="ab-label">Амжилттай ажил</div>
+    <section id="projects" class="section projects-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Хийсэн ажлууд</p>
+        <h2>Selected projects</h2>
       </div>
-      <div class="about-block">
-        <div class="ab-num">30</div>
-        <div class="ab-label">Жилийн туршлага</div>
+
+      <div class="project-list">
+        <div class="project-row reveal"><span>01</span><strong>Улаанбаатар рок фестиваль</strong><em>Stage · Light · Sound</em><b>2024</b></div>
+        <div class="project-row reveal"><span>02</span><strong>Corporate conference</strong><em>Sound · LED · Lighting</em><b>2024</b></div>
+        <div class="project-row reveal"><span>03</span><strong>Нийслэлийн наадам</strong><em>Full production</em><b>2024</b></div>
+        <div class="project-row reveal"><span>04</span><strong>Fashion & Show event</strong><em>Runway · Light</em><b>2023</b></div>
       </div>
-      <div class="about-block">
-        <div class="ab-num">50+</div>
-        <div class="ab-label">Тоног брэнд</div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <div class="about-copy reveal">
+        <p class="eyebrow">Тухай</p>
+        <h2>NovaX Stage</h2>
+        <p>NovaX Stage нь 1996 оноос хойш тайз, гэрэл, дуугаралтын мэргэжлийн тоног төхөөрөмжийн худалдаа, түрээсийн үйлчилгээ үзүүлж байна.</p>
+        <p>Бид эвентийн техникийн бүх шийдлийг нэг дороос хангаж, найдвартай, чанартай гүйцэтгэл үзүүлдэг.</p>
       </div>
-      <div class="about-block">
-        <div class="ab-num">24/7</div>
-        <div class="ab-label">Техник дэмжлэг</div>
+      <div class="about-numbers">
+        <div class="number-card reveal"><strong>200+</strong><span>Амжилттай ажил</span></div>
+        <div class="number-card reveal"><strong>30</strong><span>Жилийн туршлага</span></div>
+        <div class="number-card reveal"><strong>50+</strong><span>Тоног брэнд</span></div>
+        <div class="number-card reveal"><strong>24/7</strong><span>Дэмжлэг</span></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="contact-content reveal">
+        <p class="eyebrow">Холбоо барих</p>
+        <h2>Захиалга өгөх</h2>
+        <p>Арга хэмжээний мэдээллээ үлдээгээрэй. Бид 24 цагийн дотор холбогдоно.</p>
+        <button class="btn btn-primary" data-quote-open type="button">Үнийн санал авах</button>
+      </div>
 
-  <section id="contact" class="contact-section">
-    <div class="contact-content">
-      <div class="section-tag contact-tag">ХОЛБОО БАРИХ</div>
-      <h2 class="section-title contact-title">ЗАХИАЛГА ӨГӨХ</h2>
-      <p class="contact-sub">
-        Арга хэмжээний мэдээллээ үлдээгээрэй.<br>
-        Бид 24 цагийн дотор холбогдоно.
-      </p>
-
-      <button class="btn-primary center-btn" type="button" data-quote-open>
-        ҮНИЙН САНАЛ АВАХ →
-      </button>
-    </div>
-
-    <div class="contact-info">
-      <a class="info-card" href="tel:+97699245574">
-        <div class="info-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 11.19 19 19.5 19.5 0 0 1 5 12.81 19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8 9.67a16 16 0 0 0 6.33 6.33l1.23-1.23a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92z"></path>
-          </svg>
-        </div>
-        <div class="info-text">
-          <span>УТАС</span>
-          <strong>+976 9924 5574</strong>
-        </div>
-      </a>
-
-      <a class="info-card" href="mailto:novaxstage@gmail.com">
-        <div class="info-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
-            <path d="m22 6-10 7L2 6"></path>
-          </svg>
-        </div>
-        <div class="info-text">
-          <span>ИМЭЙЛ</span>
-          <strong class="email-text">novaxstage@gmail.com</strong>
-        </div>
-      </a>
-
-      <div class="info-card">
-        <div class="info-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z"></path>
-            <circle cx="12" cy="10" r="3"></circle>
-          </svg>
-        </div>
-        <div class="info-text">
-          <span>ХАЯГ</span>
-          <strong>Улаанбаатар, Монгол</strong>
+      <div class="contact-cards">
+        <a class="contact-card reveal" href="tel:+97699245574">
+          <span>Утас</span><strong>+976 9924 5574</strong>
+        </a>
+        <a class="contact-card reveal" href="mailto:novaxstage@gmail.com">
+          <span>Имэйл</span><strong>novaxstage@gmail.com</strong>
+        </a>
+        <div class="contact-card reveal">
+          <span>Хаяг</span><strong>Улаанбаатар, Монгол</strong>
         </div>
       </div>
-    </div>
 
-    <div class="contact-copy">© 2026 NovaX Stage. Бүх эрх хуулиар хамгаалагдсан.</div>
-  </section>
+      <div class="socials reveal">
+        <a href="https://www.facebook.com/people/NOVA-X-STAGE/100083360228173/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/novaxstage/" target="_blank" rel="noopener">Instagram</a>
+      </div>
 
+      <p class="copyright">© 2026 NovaX Stage. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </section>
+  </main>
 
-
-
-
-
-  <!-- QUOTE MODAL -->
-  <div class="quote-modal" id="quoteModal" aria-hidden="true">
-    <div class="quote-modal-card" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
-      <button class="quote-close" type="button" data-quote-close aria-label="Close">&times;</button>
+  <div class="modal" id="quoteModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+      <button class="modal-close" type="button" data-quote-close aria-label="Close">×</button>
       <h3 id="quoteTitle">Үнийн санал авах</h3>
-      <p>Нэр, утас, имэйл болон арга хэмжээний мэдээллээ үлдээгээрэй. Бид 24 цагийн дотор холбогдоно.</p>
+      <p>Нэр, утас, имэйл болон арга хэмжээний мэдээллээ үлдээгээрэй.</p>
 
-      <form class="quote-form" id="quoteForm" action="https://formspree.io/f/mgorqynz" method="POST">
+      <form id="quoteForm" action="https://formspree.io/f/mgorqynz" method="POST">
         <input type="text" name="name" placeholder="Таны нэр" required>
         <input type="tel" name="phone" placeholder="Утасны дугаар" required>
         <input type="email" name="email" placeholder="Имэйл хаяг" required>
         <textarea name="message" placeholder="Арга хэмжээний төрөл, огноо, хэрэгтэй тоног төхөөрөмж..." required></textarea>
         <input type="hidden" name="_subject" value="NovaX Stage - Үнийн санал авах хүсэлт">
-        <button class="quote-submit" type="submit">Дуусгах</button>
+        <button class="btn btn-primary form-submit" type="submit">Дуусгах</button>
       </form>
 
-      <div class="quote-success" id="quoteSuccess">
-        <div class="quote-success-icon">✓</div>
+      <div class="success" id="quoteSuccess">
+        <div class="success-icon">✓</div>
         <h3>Баярлалаа!</h3>
-        <p>Таны хүсэлт амжилттай илгээгдлээ. Бид 24 цагийн дотор холбогдох болно.</p>
-        <button class="quote-submit" type="button" data-quote-close>Хаах</button>
+        <p>Таны хүсэлт амжилттай илгээгдлээ.</p>
+        <button class="btn btn-primary" data-quote-close type="button">Хаах</button>
       </div>
     </div>
   </div>
