@@ -48,9 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const contact = document.getElementById("contact");
   if (contact) {
     const contactObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        contact.classList.toggle("light-on", entry.isIntersecting);
-      });
+      entries.forEach(entry => contact.classList.toggle("light-on", entry.isIntersecting));
     }, { threshold: 0.3 });
     contactObserver.observe(contact);
   }
@@ -60,9 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const quoteSuccess = document.getElementById("quoteSuccess");
 
   function openModal() {
-    if (!modal) return;
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
+    modal?.classList.add("open");
+    modal?.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     if (quoteForm && quoteSuccess) {
       quoteForm.reset();
@@ -72,9 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function closeModal() {
-    if (!modal) return;
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
+    modal?.classList.remove("open");
+    modal?.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
   }
 
