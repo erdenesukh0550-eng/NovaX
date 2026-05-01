@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NOVAX STAGE тоног төхөөрөмжийн каталог." />
+  <title>NOVAX STAGE – Каталог</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html#home" class="brand" aria-label="NOVAX home">
+      <img src="novax-logo.png" alt="NOVAX STAGE logo">
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#services">Үйлчилгээ</a></li>
+      <li><a href="index.html#projects">Ажлууд</a></li>
+      <li><a class="active" href="catalog.html">Каталог</a></li>
+      <li><a href="index.html#about">Тухай</a></li>
+      <li><a href="index.html#contact">Холбоо</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main class="catalog-page">
+    <div class="catalog-hero reveal">
+      <div class="breadcrumb" id="breadcrumb"></div>
+      <p class="eyebrow">Catalog</p>
+      <h1 id="catalogTitle">Тоног төхөөрөмжийн каталог</h1>
+      <p id="catalogSubtitle">Брэндээ сонгоод төрлөөр нь үзнэ үү. Зураг дээр дарахад томоор нээгдэж, баруун/зүүн сум дарахад дараагийн зураг харагдана.</p>
+    </div>
+
+    <section id="catalogContent"></section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" type="button" id="lbClose">×</button>
+    <button class="lb-prev" type="button" id="lbPrev">‹</button>
+    <img id="lbImage" src="" alt="Catalog image">
+    <button class="lb-next" type="button" id="lbNext">›</button>
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+
+  <div class="modal" id="quoteModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close" type="button" data-quote-close>×</button>
+      <h3>Үнийн санал авах</h3>
+      <p>Нэр, утас, имэйл болон сонирхож буй тоног төхөөрөмжийн мэдээллээ үлдээгээрэй.</p>
+      <form id="quoteForm" action="https://formspree.io/f/mgorqynz" method="POST">
+        <input name="name" placeholder="Таны нэр" required>
+        <input name="phone" placeholder="Утасны дугаар" required>
+        <input name="email" type="email" placeholder="Имэйл хаяг" required>
+        <textarea name="message" placeholder="Сонирхож буй брэнд, төрөл, model эсвэл арга хэмжээний мэдээлэл..." required></textarea>
+        <input type="hidden" name="_subject" value="NOVAX STAGE - Каталогийн үнийн санал">
+        <button class="btn primary" type="submit">Илгээх</button>
+      </form>
+      <div class="success" id="quoteSuccess">
+        <div class="success-icon">✓</div>
+        <h3>Баярлалаа!</h3>
+        <p>Таны хүсэлт амжилттай илгээгдлээ.</p>
+        <button class="btn primary" type="button" data-quote-close>Хаах</button>
+      </div>
+    </div>
+  </div>
+
+<script src="main.js"></script>
+<script src="catalog-data.js"></script>
+<script src="catalog.js"></script>
+</body>
+</html>

@@ -28,13 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
     navbar?.classList.toggle("scrolled", y > 40);
     if (navbar) {
       if (y <= 10 || y < lastY) navbar.style.transform = "translateY(0)";
-      else if (y > 120) navbar.style.transform = "translateY(-110%)";
+      else if (y > 140) navbar.style.transform = "translateY(-110%)";
     }
     lastY = y;
 
     if (progress) {
       const h = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = `${Math.max(0, Math.min(100, (y / h) * 100))}%`;
+      progress.style.width = h > 0 ? `${Math.max(0, Math.min(100, (y / h) * 100))}%` : "0%";
     }
   }, { passive: true });
 
@@ -97,6 +97,14 @@ document.addEventListener("DOMContentLoaded", () => {
         quoteForm.reset();
         quoteForm.style.display = "none";
         quoteSuccess?.classList.add("show");
+        setTimeout(() => {
+          closeModal();
+          if (location.pathname.endsWith("catalog.html")) {
+            window.location.href = "index.html#home";
+          } else {
+            scrollToId("home");
+          }
+        }, 1700);
       } else {
         alert("Илгээхэд алдаа гарлаа. Дахин оролдоно уу.");
       }
@@ -108,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // N.O.V.A background sound toggle
   const soundToggle = document.getElementById("soundToggle");
   const novaBgm = document.getElementById("novaBgm");
   let novaSoundPlaying = false;
@@ -130,7 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   soundToggle?.addEventListener("click", async () => {
     if (!novaBgm) return;
-
     if (!novaSoundPlaying) {
       try {
         novaBgm.volume = 0;
@@ -152,5 +158,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 650);
     }
   });
-
 });

@@ -4,27 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="NOVAX STAGE – Тайз, гэрэл, дуугаралт, LED дэлгэц, event production үйлчилгээ." />
-  <title>NOVAX STAGE – Next Level</title>
+  <title>NOVAX STAGE – Stage · Light · Sound · LED</title>
+  <link rel="icon" href="favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="progress" id="progress"></div>
 
   <nav class="navbar" id="navbar">
-    <a href="#home" class="brand" aria-label="NOVAX home">
-      <img src="novax-logo.png" alt="NOVAX STAGE logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span class="brand-fallback">NOVAX STAGE</span>
+    <a href="index.html#home" class="brand" aria-label="NOVAX home">
+      <img src="novax-logo.png" alt="NOVAX STAGE logo">
     </a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Үйлчилгээ</a></li>
-      <li><a href="#projects">Ажлууд</a></li>
-      <li><a href="#equipment">Тоног</a></li>
-      <li><a href="#about">Тухай</a></li>
-      <li><a href="#contact">Холбоо</a></li>
+      <li><a href="index.html#services">Үйлчилгээ</a></li>
+      <li><a href="index.html#projects">Ажлууд</a></li>
+      <li><a href="catalog.html">Каталог</a></li>
+      <li><a href="index.html#about">Тухай</a></li>
+      <li><a href="index.html#contact">Холбоо</a></li>
     </ul>
 
     <button class="nav-toggle" id="navToggle" aria-label="Menu" type="button">
@@ -35,8 +35,8 @@
   <header id="home" class="hero">
     <div class="hero-glow"></div>
     <div class="hero-content reveal">
-      <p class="eyebrow">STAGE · LIGHT · SOUND · LED</p>
-      <h1>БИД МАРТАГДАШГҮЙ<br>ТУРШЛАГА БҮТЭЭДЭГ</h1>
+      <p class="eyebrow">Stage · Light · Sound · LED</p>
+      <h1>Бид мартагдашгүй<br>туршлага бүтээдэг</h1>
       <p class="hero-sub">Тайз, гэрэл, дуугаралт, LED дэлгэцийн мэргэжлийн шийдлийг нэг дороос санал болгодог.</p>
       <div class="hero-actions">
         <button class="btn primary" type="button" data-quote-open>Үнийн санал авах</button>
@@ -52,7 +52,7 @@
   </header>
 
   <main>
-    <section id="services" class="section">
+    <section id="services" class="section services-section">
       <div class="section-head reveal">
         <p class="eyebrow">Үйлчилгээ</p>
         <h2>Эвентийн цогц шийдэл</h2>
@@ -108,23 +108,20 @@
       </div>
 
       <div class="project-list">
-        <div class="row reveal"><b>01</b><strong>Улаанбаатар рок фестиваль</strong><span>SOUND · LED · LIGHT</span><em>2024</em></div>
-        <div class="row reveal"><b>02</b><strong>Corporate conference</strong><span>SOUND · LED · LIGHT</span><em>2024</em></div>
-        <div class="row reveal"><b>03</b><strong>Fashion / show event</strong><span>STAGE · LIGHT</span><em>2023</em></div>
+        <div class="row reveal"><b>01</b><strong>Улаанбаатар рок фестиваль</strong><span>Sound · LED · Light</span><em>2024</em></div>
+        <div class="row reveal"><b>02</b><strong>Corporate conference</strong><span>Sound · LED · Light</span><em>2024</em></div>
+        <div class="row reveal"><b>03</b><strong>Fashion / show event</strong><span>Stage · Light</span><em>2023</em></div>
       </div>
     </section>
 
-    <section id="equipment" class="section equipment">
+    <section id="catalog-preview" class="section catalog-preview">
       <div class="section-head reveal">
-      
-        <h2>Мэргэжлийн тоног төхөөрөмж</h2>
+        <p class="eyebrow">Каталог</p>
+        <h2>Тоног төхөөрөмжийн каталог</h2>
+        <p>Гэрэл, дуу, тайз, LED тоног төхөөрөмжийн худалдаа болон үнийн санал авах боломжтой каталог.</p>
       </div>
-
-      <div class="cards four compact">
-        <div class="card reveal"><span class="tag">Sound</span><h3>Line Array систем</h3><p>JBL · L-Acoustics</p></div>
-        <div class="card reveal"><span class="tag">Light</span><h3>Moving Head гэрэл</h3><p>Beam · Spot · Wash</p></div>
-        <div class="card reveal"><span class="tag">Stage</span><h3>Truss систем</h3><p>Rigging · Structure</p></div>
-        <div class="card reveal"><span class="tag">LED</span><h3>LED дэлгэц</h3><p>Дэлгэц · Удирдлага</p></div>
+      <div class="catalog-cta reveal">
+        <a class="btn primary" href="catalog.html">Каталог нээх</a>
       </div>
     </section>
 
@@ -165,7 +162,6 @@
     </section>
   </main>
 
-
   <button class="sound-toggle" id="soundToggle" type="button" aria-label="Toggle background sound">
     <span class="sound-on">🔊</span>
     <span class="sound-text">Sound</span>
@@ -186,7 +182,7 @@
         <input name="email" type="email" placeholder="Имэйл хаяг" required>
         <textarea name="message" placeholder="Арга хэмжээний төрөл, огноо, хэрэгтэй тоног төхөөрөмж..." required></textarea>
         <input type="hidden" name="_subject" value="NOVAX STAGE - Үнийн санал авах хүсэлт">
-        <button class="btn primary" type="submit">Дуусгах</button>
+        <button class="btn primary" type="submit">Илгээх</button>
       </form>
       <div class="success" id="quoteSuccess">
         <div class="success-icon">✓</div>

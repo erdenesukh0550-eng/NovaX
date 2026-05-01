@@ -1,76 +1,32 @@
-# NovaX – Stage · Light · Sound
+# NOVAX STAGE — Ready Package
 
-Мэргэжлийн тайз, гэрэл, дуугарлын тоног төхөөрөмжийн худалдаа, түрээсийн вэбсайт.
+Энэ багц нь Vercel / GitHub дээр шууд хуулж deploy хийхэд бэлэн хувилбар.
 
-## Файл бүтэц
+## Зассан зүйлс
 
-```
-novax/
-├── index.html        # Үндсэн хуудас
-├── css/
-│   └── style.css     # Бүх загвар
-├── js/
-│   └── main.js       # Интерактив функцууд
-├── images/           # Зурган файлууд (өөрийн зургаа нэмнэ)
-└── README.md
-```
+1. Монгол текстийн font бүгдийг Manrope болгосон.
+2. Navbar дээрх `Тоног` цэсийг `Каталог` болгосон.
+3. Зүүн дээд logo-г томруулсан.
+4. Утасны дэлгэц дээр hero хэсэг багтахгүй байсан responsive алдааг зассан.
+5. `catalog.html` нэмсэн. Flow: `Каталог → AODELI → төрөл → JPG gallery`.
+6. Gallery дээр зураг дарахад томорч нээгдэнэ, баруун/зүүн сум болон keyboard arrow ажиллана.
+7. Үнийн санал авах Formspree form хэвээр ажиллана.
 
-## Технологи
+## Каталог зураг нэмэх дүрэм
 
-- HTML5
-- CSS3 (CSS Variables, Grid, Flexbox, Animations)
-- Vanilla JavaScript (IntersectionObserver, scroll events)
-- Google Fonts: Bebas Neue + DM Sans
+Жишээ нь Beam folder дотор зургаа ингэж нэрлэнэ:
 
-## GitHub Pages дээр байршуулах
-
-1. GitHub дээр шинэ repository үүсгэх
-2. Файлуудыг upload хийх
-3. Settings → Pages → Branch: `main` → Save
-4. `https://username.github.io/novax` хаягаар нээгдэнэ
-
-## Хэрэглэгчийн өөрчлөх хэсгүүд
-
-### Холбоо барих мэдээлэл
-`index.html` файлд утас, имэйл, хаягийг шинэчлэх:
-
-```html
-<div class="co-val">+976 9900 0000</div>   <!-- Утас -->
-<div class="co-val">info@novax.mn</div>     <!-- Имэйл -->
+```text
+catalog/aodeli/beam/001.jpg
+catalog/aodeli/beam/002.jpg
+catalog/aodeli/beam/003.jpg
 ```
 
-### Тоног нэмэх
-`index.html`-д `.eq-card` блок нэмэх:
+Систем 001-080 хүртэлх `jpg`, `jpeg`, `png`, `webp` файлуудыг автоматаар хайж gallery-д харуулна.
 
-```html
-<div class="eq-card">
-  <div class="eq-badge">Дуу</div>
-  <div class="eq-name">Тоногийн нэр</div>
-  <div class="eq-model">Загварын нэр</div>
-  <div class="eq-type">Түрээс · Худалдаа</div>
-</div>
-```
+## Deploy хийх
 
-### Хийсэн ажил нэмэх
-```html
-<div class="project-row">
-  <div class="proj-num">07</div>
-  <div class="proj-name">АЖЛЫН НЭР</div>
-  <div class="proj-meta">Тайз · Гэрэл</div>
-  <div class="proj-year">2025</div>
-</div>
-```
-
-### Өнгө өөрчлөх
-`css/style.css` файлын `:root` хэсэгт:
-
-```css
-:root {
-  --accent: #c8ff00;   /* Ногоон accent → өөр өнгөөр солих */
-  --black:  #0a0a0a;   /* Дэвсгэр өнгө */
-}
-```
-
-## License
-
-MIT
+1. ZIP-г задлаад бүх файлыг project-ийн root/public хавтас руу хуулна.
+2. Өөрийн catalog зурагнуудаа `catalog/aodeli/...` folder-ууд руу оруулна.
+3. GitHub рүү push хийнэ.
+4. Vercel автоматаар дахин deploy хийнэ.
