@@ -42,7 +42,7 @@ function setBreadcrumb(items) {
 
 function renderBrands() {
   title.textContent = "Тоног төхөөрөмжийн каталог";
-  subtitle.textContent = "Эхлээд брэндээ сонгоно. Дараа нь төрөл рүү орж тухайн folder доторх JPG зургуудыг gallery хэлбэрээр үзнэ.";
+  if (subtitle) subtitle.textContent = "";
   setBreadcrumb([{ label: "Каталог" }]);
   content.innerHTML = `
     <div class="catalog-grid">
@@ -54,15 +54,12 @@ function renderBrands() {
         </a>
       `).join("")}
     </div>
-    <div class="catalog-info reveal visible">
-      Сонголт A идэвхтэй: зурагнууд өөрийн нэрээрээ үлдэнэ. Файлын нэрсийг <b>catalog-data.js</b> дотор жагсааж өгнө.
-    </div>
   `;
 }
 
 function renderBrand(brand) {
   title.textContent = brand.name;
-  subtitle.textContent = brand.description;
+  if (subtitle) subtitle.textContent = "";
   setBreadcrumb([
     { label: "Каталог", href: "catalog.html" },
     { label: brand.name }
@@ -91,7 +88,7 @@ function listedImagePaths(brandId, categoryId) {
 
 async function renderGallery(brand, category) {
   title.textContent = `${brand.name} · ${category.name}`;
-  subtitle.textContent = "Зураг дээр дараад томоор үзнэ. Баруун/зүүн сум эсвэл keyboard arrow ашиглаж болно.";
+  if (subtitle) subtitle.textContent = "";
   setBreadcrumb([
     { label: "Каталог", href: "catalog.html" },
     { label: brand.name, href: `catalog.html#${brand.id}` },
@@ -108,9 +105,7 @@ async function renderGallery(brand, category) {
         <button class="btn primary" type="button" data-quote-open>Үнийн санал авах</button>
       </div>
       <div class="empty-gallery">
-        Энэ folder-ийн зурагны нэрс <b>catalog-data.js</b> дотор хараахан нэмэгдээгүй байна.<br>
-        Зургууд folder дотроо өөрийн нэрээрээ үлдэнэ. Харин нэрсийг list-д яг тэр чигээр нь бичнэ:<br>
-        <b>catalog/${brand.id}/${category.id}/таны-файлын-нэр.jpg</b>
+        Энэ ангилалд одоогоор зураг нэмэгдээгүй байна.
       </div>
     `;
     document.querySelectorAll("[data-quote-open]").forEach(btn => btn.addEventListener("click", () => document.getElementById("quoteModal")?.classList.add("open")));
